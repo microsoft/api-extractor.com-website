@@ -1,0 +1,15 @@
+- text: About
+  url: https://github.com/Microsoft/web-build-tools/wiki/API-Extractor-~-Feature-walkthrough
+
+- text: News
+  url: https://github.com/Microsoft/web-build-tools/wiki
+
+- text: API
+  url: https://microsoft.github.io/web-build-tools/api/api-extractor.html
+
+- text: Gitter
+  url: https://gitter.im/web-build-tools/web-build-tools
+
+- text: Get Started
+  url: https://github.com/Microsoft/web-build-tools/wiki/API-Extractor-~-Enabling-for-your-project
+  primary: true
