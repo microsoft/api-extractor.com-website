@@ -85,8 +85,8 @@
 
 // Add a little icon next to hyperlinks that point to an external page.
 // We only do this inside an <article>.  An external page has "://" in its
-// URL and does not include to "rushjs.io" or "localhost".
-article a[href*="://"]:not([href*="rushjs.io"]):not([href*="localhost"]) {
+// URL and does not include to "api-extractor.com" or "localhost".
+article a[href*="://"]:not([href*="api-extractor.com"]):not([href*="localhost"]) {
   background-position: center right;
   background-repeat: no-repeat;
   padding-right: 13px;

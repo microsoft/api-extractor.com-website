@@ -1,32 +1,41 @@
 ---
 layout: page
-title: Welcome to Rush!
+title: What is API Extractor?
 navigation_source: docs_nav
 ---
 
-![My helpful screenshot]({{ "/images/rush.svg" | absolute_url }}){:style="width: 12rem"}
+![API Extractor]({{ "/images/api-extractor-title.png" | absolute_url }}){:style="width: 12rem"}
 
-**Rush** makes life easier for JavaScript developers who build and publish many NPM packages at once.  If you're looking to consolidate all your projects into a single repo, you came to the right place!  Rush is a fast, professional solution for managing this scenario.  It gives you:
+<!-- ---------------------------------------------------------------------------- -->
+<!-- Text below this line should stay in sync with api-extractor's README.md file -->
+<!-- ---------------------------------------------------------------------------- -->
 
-- **A single NPM install:** In one step, Rush installs all the dependencies for all your projects into a common folder.  This is not just a "package.json" file at the root of your repo (which might set you up to accidentally `require()` a sibling's dependencies).  Instead, Rush uses symlinks to reconstruct an accurate "node_modules" folder for each project, without any of the limitations or glitches that seem to plague other approaches.
+**API Extractor** helps you build better [TypeScript](https://www.typescriptlang.org/) library packages.  Suppose for example that your company has published an NPM package called "**awesome-widgets**" that exports many classes and interfaces.  As developers start to depend on your library, you may encounter issues such as...
 
-  ⏵ **This algorithm supports the [PNPM, NPM, and Yarn]({% link pages/maintainer/package_managers.md %}) package managers.**
+- **Accidental breaks:**  People keep reporting that their code won't compile after a supposedly "minor" update.  To address this, you boldly propose that every **awesome-widgets** pull request must be approved by an experienced developer from your team.  But that proves unrealistic -- nobody has time to look at every single PR!  What you really need is a way to detect PRs that change API contracts, and flag them for review.  That would focus attention in the right place... but how to do that?
 
-- **Automatic local linking:** Inside a Rush repo, all your projects are automatically symlinked to each other. When you make a change, you can see the downstream effects without publishing anything, and without any `npm link` headaches.  If you don't want certain projects to get linked, that's supported, too.
+- **Missing exports:** Suppose the **awesome-widgets** package exports an API function `AwesomeButton.draw()` that requires a parameter of type `DrawStyle`, but you forgot to export this enum.  Things seem fine at first, but when a developer tries to call that function, they discover that there's no way to specify the `DrawStyle`.  How to avoid these oversights?
 
-- **Fast builds:** Rush detects your dependency graph and builds your projects in the right order.  If two packages don't directly depend on each other, Rush parallelizes their build as separate NodeJS processes (and shows live console output in a [readable order](https://www.npmjs.com/package/@microsoft/stream-collator)).  In practice this multi-process approach can yield more significant speedups than all those async functions in your single-threaded Gulpfile.
+- **Accidental exports:** You meant for your `DrawHelper` class to be kept internal, but one day you realize it's being exported.  When you try to remove it, consumers complain that they're using it.  How do we avoid this in the future?
 
-- **Subset and incremental builds:** If you only plan to work with a few projects from your repo, `rush rebuild --to <project>` does a clean build of just your upstream dependencies.  After you make changes, `rush rebuild --from <project>` does a clean build of only the affected downstream projects.  And if your toolchain is [package-deps-hash](https://www.npmjs.com/package/@microsoft/package-deps-hash) enabled, `rush build` delivers a powerful cross-project incremental build (that also supports subset builds).
+- **Alpha/Beta graduation:**  You want to release previews of new APIs that are not ready for prime time yet.  But if you did a major SemVer bump every time these definitions evolve, the villagers would be after you with torches and pitchforks!  A better approach is to designate certain classes/members as **alpha** quality, then promote them to **beta** and finally to **public** as they mature.  But how to indicate this to your consumers?  (And how to detect scoping mistakes?  A **public** function should never return a **beta** result.)
 
-- **Cyclic dependencies:** If you have hammers that build hammer-factory-factories, Rush has you covered!  When a package indirectly depends on an older version of itself, projects in the cycle use the last published version, whereas other projects still get the latest bits.
+- **\*.d.ts rollup:** You webpacked your library into a nice **\*.js** bundle file -- so why ship your typings as a messy tree of **lib/\*.d.ts** files full of private definitions?  Can't we consolidate them into a tidy **\*.d.ts** rollup file?  And if you publish internal/beta/public releases, each release type should get its own **\*.d.ts** file with appropriate trimming.  Developers building a production project don't want to see a bunch of **internal** and **beta** members in their VS Code IntelliSense!
 
-- **Bulk publishing:** When it's time to do a release, Rush can detect which packages have changes, automatically bump all the appropriate version numbers, and run `npm publish` in each folder.  If you like, configure your server to automatically run `rush publish` every hour.
+- **Online documentation:**  You have faithfully annotated each TypeScript member with nice [JSDoc](http://usejsdoc.org/) descriptions.  Now that your library has shipped, it's time to set up [a nicely formatted](https://docs.microsoft.com/en-us/javascript/api/sp-http) API reference.  What tool to use?
 
-- **Changelog tracking:** Whenever a PR is created, you can require developers to provide a major/minor/patch log entry for the affected projects.  During publishing, these changes will be automatically aggregated into a nicely formatted [CHANGELOG.md](https://github.com/Microsoft/web-build-tools/blob/master/libraries/node-core-library/CHANGELOG.md) file.
+**API Extractor** provides an integrated, professional-quality solution for all these problems.  It is invoked at build time by your toolchain and leverages the TypeScript compiler engine to:
 
-- **Enterprise policies:** Want to review new libraries before developers add them to package.json, but avoid hassling people about already approved cases?  Want to enforce that all your projects depend on the same library version numbers?  Are unprofessional personal e-mail addresses accidentally showing up in your company's Git history?  Rush can help maintain a consistent ecosystem when you've got many developers and many projects in the mix.
+- Detect a project's exported API surface
+- Capture the contracts in a concise report designed to facilitate review
+- Warn about common mistakes (e.g. missing exports, inconsistent visibility, etc.)
+- Generate \*.d.ts rollups with trimming according to release type
+- Output API documentation in a portable format that's easy to integrate with your content pipeline
 
-- **Lots more!** Rush was created by the platform team for [Microsoft SharePoint](http://aka.ms/spfx).  We build hundreds of production NPM packages every day, from internal and public Git repositories, for third party SDKs and live services with millions of users.  If there's an important package management problem that needs solvin', it's likely to end up as a feature for Rush.
+Best of all, **API Extractor** is free and open source.  Join the community and create a pull request!
 
+<!-- ---------------------------------------------------------------------------- -->
+<!-- Text above this line should stay in sync with api-extractor's README.md file -->
+<!-- ---------------------------------------------------------------------------- -->
 
-#### Next up: [Getting started with Rush]({% link pages/intro/get_started.md %})
+#### Next up: [Getting started with API Extractor]({% link pages/intro/get_started.md %})
