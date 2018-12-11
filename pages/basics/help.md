@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Getting Support
+title: Getting Help
 navigation_source: docs_nav
 ---
 

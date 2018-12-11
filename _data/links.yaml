@@ -1,5 +1,5 @@
-masthead_learn_more: /pages/intro/welcome
+masthead_learn_more: /pages/basics/intro
 
-masthead_get_started: /pages/intro/get_started
+masthead_get_started: /pages/setup/get_started
 
 edit_this_page_base_url: https://github.com/Microsoft/api-extractor.com-website/edit/master/

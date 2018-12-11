@@ -1,30 +1,51 @@
 
 top_nav:
   - title: Docs
-    url: /pages/intro/welcome
+    url: /pages/basics/intro
 
   - title: News
     url: /pages/news
 
   - title: GitHub
-    url: /pages/contributing
+    url: /pages/contributing/overview
 
   - title: Help
-    url: /pages/help/support
+    url: /pages/basics/help
 
   - title: Get Started
-    url: /pages/intro/get_started
+    url: /pages/setup/get_started
     primary: true
 
 docs_nav:
-  - title: Introduction
+  - title: The Basics
     subitems:
       - title: What is API Extractor?
-        url: /pages/intro/welcome
-      - title: Getting started
-        url: /pages/intro/get_started
+        url: /pages/basics/intro
+      - title: Feature Walkthrough
+        url: /pages/basics/walkthrough
+      - title: Getting Help
+        url: /pages/basics/help
 
-  - title: Help
+  - title: Setting it up
     subitems:
-      - title: Getting Support
-        url: /pages/help/support
+      - title: Getting Started
+        url: /pages/setup/get_started
+      - title: Generating Review Files
+        url: /pages/setup/generating_reviews
+      - title: Generating .d.ts Rollups
+        url: /pages/setup/generating_rollups
+      - title: Generating Docs
+        url: /pages/setup/generating_docs
+      - title: api-extractor.json
+        url: /pages/setup/config_file
+
+  - title: TSDoc Reference
+    subitems:
+      - title: Doc Comment Syntax
+        url: /pages/tsdoc/syntax
+
+  - title: Contributing
+    subitems:
+      - title: Overview
+        url: /pages/contributing/overview
+

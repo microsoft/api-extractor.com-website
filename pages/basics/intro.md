@@ -38,4 +38,4 @@ Best of all, **API Extractor** is free and open source.  Join the community and 
 <!-- Text above this line should stay in sync with api-extractor's README.md file -->
 <!-- ---------------------------------------------------------------------------- -->
 
-#### Next up: [Getting started with API Extractor]({% link pages/intro/get_started.md %})
+#### Next up: [Feature Walkthrough]({% link pages/basics/walkthrough.md %})
