@@ -4,17 +4,20 @@
   <head>
     {% include base/meta.html %}
 
-    <title>API Extractor - {{ page.title }}</title>
+    {% if page.title %}
+    <title>Rush: {{ page.title }}</title>
+    {% else %}
+    <title>Rush</title>
+    {% endif %}
 
     {% include base/styles.html %}
   </head>
 
   <body>
-    {% include base/navbar.html %}
+    {% include base/top_nav.html %}
 
     {{ content }}
 
     {% include base/footer.html %}
-    {% include base/scripts.html %}
   </body>
 </html>

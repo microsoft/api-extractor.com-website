@@ -10,11 +10,18 @@
     <meta name="description" content="{{ site.description }}">
     <meta property="og:description" content="{{ site.description }}" />
     {% endif %}
-    <meta name="author" content="{{ site.name }}" />
+    <!-- <meta name="author" content="{{ site.title }}" /> -->
 
     {% if page.title %}
-    <meta property="og:title" content="{{ page.title }}" />
-    <meta property="twitter:title" content="{{ page.title }}" />
+    <meta property="og:title" content="Rush: {{ page.title }}" />
+    <meta property="twitter:title" content="Rush: {{ page.title }}" />
+    {% else %}
+    <meta property="og:title" content="Rush" />
+    <meta property="twitter:title" content="Rush" />
+    {% endif %}
+
+    {% if site.logo %}
+    <meta property="og:image" content="{{ site.logo }}" />
     {% endif %}
 
     <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/images/apple-touch-icon.png">

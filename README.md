@@ -14,8 +14,20 @@ Once the above dependencies are installed on your local machine, run the followi
 and run the solution locally:
 
 1. Install the site's gem dependencies with `bundle install` at the root of the project.
-2. Start the local web server with `jekyll serve` or for incremental builds run `jekyll serve --incremental`.
+2. Start the local web server with `bundle exec jekyll serve` or for incremental builds run `bundle exec jekyll serve --incremental`.
 3. Once the site has been generated you'll be able to navigate to it at [http://127.0.0.1:4000/](http://127.0.0.1:4000/).
+
+## Regenerating the search index
+
+1. Log in to the https://www.algolia.com/ dashboard using the "rushbot" GitHub alias
+2. Confirm that the Search-Only API Key and Application ID match the definitions in _config.yml
+3. Run this command:
+
+```
+set ALGOLIA_API_KEY=(your_admin_api_key)
+bundle exec jekyll build
+bundle exec jekyll algolia
+```
 
 # Contributing
 
