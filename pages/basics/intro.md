@@ -4,38 +4,18 @@ title: What is API Extractor?
 navigation_source: docs_nav
 ---
 
-![API Extractor]({{ "/images/api-extractor-title.png" | absolute_url }}){:style="width: 12rem"}
+API Extractor is a TypeScript analysis tool that supports three major scenarios:
 
-<!-- ---------------------------------------------------------------------------- -->
-<!-- Text below this line should stay in sync with api-extractor's README.md file -->
-<!-- ---------------------------------------------------------------------------- -->
+**1. API Report** - It can follows all exports from the project entry point, and generates a report that can be used
+to drive an API review workflow.
 
-**API Extractor** helps you build better [TypeScript](https://www.typescriptlang.org/) library packages.  Suppose for example that your company has published an NPM package called "**awesome-widgets**" that exports many classes and interfaces.  As developers start to depend on your library, you may encounter issues such as...
+**2. .d.ts Rollups** - Similar to how **Webpack** can roll up all your JavaScript files into a single bundle for distribution, API Extractor can roll up your TypeScript declarations into a single .d.ts file.
 
-- **Accidental breaks:**  People keep reporting that their code won't compile after a supposedly "minor" update.  To address this, you boldly propose that every **awesome-widgets** pull request must be approved by an experienced developer from your team.  But that proves unrealistic -- nobody has time to look at every single PR!  What you really need is a way to detect PRs that change API contracts, and flag them for review.  That would focus attention in the right place... but how to do that?
+**3. Online Documentation** - API Extractor can generate an .api.json file for each of your projects containing the extracted signatures and doc comments (using [TSDoc](https://github.com/Microsoft/tsdoc) notation).  The **api-documenter** tool can then be used to generate an online API reference.
 
-- **Missing exports:** Suppose the **awesome-widgets** package exports an API function `AwesomeButton.draw()` that requires a parameter of type `DrawStyle`, but you forgot to export this enum.  Things seem fine at first, but when a developer tries to call that function, they discover that there's no way to specify the `DrawStyle`.  How to avoid these oversights?
+<div class="d-flex flex-row justify-content-center py-5">
+  <img height="250px mx-auto" src="{{ site.baseurl }}/images/ae-flow-chart.svg" />
+</div>
 
-- **Accidental exports:** You meant for your `DrawHelper` class to be kept internal, but one day you realize it's being exported.  When you try to remove it, consumers complain that they're using it.  How do we avoid this in the future?
-
-- **Alpha/Beta graduation:**  You want to release previews of new APIs that are not ready for prime time yet.  But if you did a major SemVer bump every time these definitions evolve, the villagers would be after you with torches and pitchforks!  A better approach is to designate certain classes/members as **alpha** quality, then promote them to **beta** and finally to **public** as they mature.  But how to indicate this to your consumers?  (And how to detect scoping mistakes?  A **public** function should never return a **beta** result.)
-
-- **\*.d.ts rollup:** You webpacked your library into a nice **\*.js** bundle file -- so why ship your typings as a messy tree of **lib/\*.d.ts** files full of private definitions?  Can't we consolidate them into a tidy **\*.d.ts** rollup file?  And if you publish internal/beta/public releases, each release type should get its own **\*.d.ts** file with appropriate trimming.  Developers building a production project don't want to see a bunch of **internal** and **beta** members in their VS Code IntelliSense!
-
-- **Online documentation:**  You have faithfully annotated each TypeScript member with nice [JSDoc](http://usejsdoc.org/) descriptions.  Now that your library has shipped, it's time to set up [a nicely formatted](https://docs.microsoft.com/en-us/javascript/api/sp-http) API reference.  What tool to use?
-
-**API Extractor** provides an integrated, professional-quality solution for all these problems.  It is invoked at build time by your toolchain and leverages the TypeScript compiler engine to:
-
-- Detect a project's exported API surface
-- Capture the contracts in a concise report designed to facilitate review
-- Warn about common mistakes (e.g. missing exports, inconsistent visibility, etc.)
-- Generate \*.d.ts rollups with trimming according to release type
-- Output API documentation in a portable format that's easy to integrate with your content pipeline
-
-Best of all, **API Extractor** is free and open source.  Join the community and create a pull request!
-
-<!-- ---------------------------------------------------------------------------- -->
-<!-- Text above this line should stay in sync with api-extractor's README.md file -->
-<!-- ---------------------------------------------------------------------------- -->
 
 #### Next up: [Feature Walkthrough]({% link pages/basics/walkthrough.md %})
