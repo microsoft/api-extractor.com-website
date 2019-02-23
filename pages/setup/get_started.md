@@ -31,11 +31,11 @@ Next, create a config file `api-extractor.json` for your project. Here's a simpl
 
 More information about this file format:
 
-- [api-extractor.schema.json](https://github.com/Microsoft/web-build-tools/blob/master/apps/api-extractor/src/extractor/api-extractor.schema.json) - the JSON schema
+- [api-extractor.schema.json](https://github.com/Microsoft/web-build-tools/blob/master/apps/api-extractor/src/schemas/api-extractor.schema.json) - the JSON schema
 
-- [IExtractorConfig.ts](https://github.com/Microsoft/web-build-tools/blob/master/apps/api-extractor/src/extractor/IExtractorConfig.ts) - TypeScript interfaces for the JSON schema
+- [IExtractorConfig.ts](https://github.com/Microsoft/web-build-tools/blob/master/apps/api-extractor/src/api/IExtractorConfig.ts) - TypeScript interfaces for the JSON schema
 
-- [api-extractor-defaults.json](https://github.com/Microsoft/web-build-tools/blob/master/apps/api-extractor/src/extractor/api-extractor-defaults.json) - the default values
+- [api-extractor-defaults.json](https://github.com/Microsoft/web-build-tools/blob/master/apps/api-extractor/src/schemas/api-extractor-defaults.json) - the default values
 
 Finally, compile your project and then invoke the **api-extractor** tool in your project folder, like this:
 
