@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Generating .d.ts Rollups
+title: Configuring a .d.ts rollup
 navigation_source: docs_nav
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Getting Started
+title: Invoking API Extractor
 navigation_source: docs_nav
 ---
 
@@ -163,4 +163,4 @@ For a real world example, take a look at [ApiExtractorTask.ts](https://github.co
 
 > **NOTE**: Although the **gulp-core-build** task's config file is also called "**api-extractor.json**", the JSON schema is completely different and considerably simpler.
 
-#### Next up: [Generating Review Files]({% link pages/setup/generating_reviews.md %})
+#### Next up: [Configuring an API report]({% link pages/setup/configure_api_report.md %})

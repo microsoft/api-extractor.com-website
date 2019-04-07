@@ -281,4 +281,4 @@ Complete documentation of this file format is provided in the JSON Schema [api-j
 
 The API JSON file does not need to be tracked by Git.  However, it should be included with your other outputs when publishing an NPM package, because **api-extractor** will use it to resolve `{@inheritdoc}` and `{@link}` references for projects that consume your library.
 
-#### Next up: [Getting Started]({% link pages/setup/get_started.md %})
+#### Next up: [The API report]({% link pages/overview/demo_api_report.md %})

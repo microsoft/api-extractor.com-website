@@ -18,4 +18,4 @@ to drive an API review workflow.
 </div>
 
 
-#### Next up: [Feature Walkthrough]({% link pages/basics/walkthrough.md %})
+#### Next up: [A sample project]({% link pages/overview/demo_project.md %})

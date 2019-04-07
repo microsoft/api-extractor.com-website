@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Generating Docs
+title: Generating API docs
 navigation_source: docs_nav
 ---
 
@@ -17,7 +17,7 @@ Suppose you simply want to publish API documentation on your GitHub web site, as
     npm install -g @microsoft/api-documenter
     ```
 
-2. Execute API Extractor on your packages to produce a collection of API JSON files (as described [here]({% link pages/setup/get_started.md %})
+2. Execute API Extractor on your packages to produce a collection of API JSON files
 
 3. Copy your *.api.json files into an input folder, for example:
 

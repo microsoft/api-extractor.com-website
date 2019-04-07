@@ -1,51 +1,140 @@
 
 top_nav:
   - title: Docs
-    url: /pages/basics/intro
+    url: /pages/overview/intro
 
   - title: News
     url: /pages/news
 
   - title: GitHub
-    url: /pages/contributing/overview
+    url: /pages/contributing/building
 
   - title: Help
-    url: /pages/basics/help
+    url: /pages/setup/help
 
   - title: Get Started
-    url: /pages/setup/get_started
+    url: /pages/setup/invoking
     primary: true
 
 docs_nav:
-  - title: The Basics
+  - title: Overview
     subitems:
       - title: What is API Extractor?
-        url: /pages/basics/intro
-      - title: Feature Walkthrough
-        url: /pages/basics/walkthrough
-      - title: Getting Help
-        url: /pages/basics/help
+        url: /pages/overview/intro
+      - title: A sample project
+        url: /pages/overview/demo_project
+      - title: The API report
+        url: /pages/overview/demo_api_report
+      - title: The .d.ts rollup
+        url: /pages/overview/demo_rollup
+      - title: The API docs
+        url: /pages/overview/demo_docs
 
-  - title: Setting it up
+  - title: Setting up your project
     subitems:
-      - title: Getting Started
-        url: /pages/setup/get_started
-      - title: Generating Review Files
-        url: /pages/setup/generating_reviews
-      - title: Generating .d.ts Rollups
-        url: /pages/setup/generating_rollups
-      - title: Generating Docs
+      - title: Invoking API Extractor
+        url: /pages/setup/invoking
+      - title: Configuring an API report
+        url: /pages/setup/configure_api_report
+      - title: Configuring a .d.ts rollup
+        url: /pages/setup/configure_rollup
+      - title: Generating API docs
         url: /pages/setup/generating_docs
-      - title: api-extractor.json
-        url: /pages/setup/config_file
+      - title: Integrating a custom doc pipeline
+        url: /pages/setup/custom_docs
+      - title: Getting Help
+        url: /pages/setup/help
 
   - title: TSDoc Reference
     subitems:
       - title: Doc Comment Syntax
-        url: /pages/tsdoc/syntax
+        url: /pages/tsdoc/doc_comment_syntax
+      - title: '@alpha'
+        url: /pages/tsdoc/tag_alpha
+      - title: '@beta'
+        url: /pages/tsdoc/tag_beta
+      - title: '@defaultValue'
+        url: /pages/tsdoc/tag_defaultvalue
+      - title: '@deprecated'
+        url: /pages/tsdoc/tag_deprecated
+      - title: '@eventProperty'
+        url: /pages/tsdoc/tag_eventProperty
+      - title: '@example'
+        url: /pages/tsdoc/tag_example
+      - title: '{@inheritDoc}'
+        url: /pages/tsdoc/tag_inheritDoc
+      - title: '{@link}'
+        url: /pages/tsdoc/tag_link
+      - title: '@override'
+        url: /pages/tsdoc/tag_override
+      - title: '@packageDocumentation'
+        url: /pages/tsdoc/tag_packageDocumentation
+      - title: '@param'
+        url: /pages/tsdoc/tag_param
+      - title: '@preapproved'
+        url: /pages/tsdoc/tag_preapproved
+      - title: '@privateRemarks'
+        url: /pages/tsdoc/tag_privateRemarks
+      - title: '@public'
+        url: /pages/tsdoc/tag_public
+      - title: '@readonly'
+        url: /pages/tsdoc/tag_readonly
+      - title: '@remarks'
+        url: /pages/tsdoc/tag_remarks
+      - title: '@returns'
+        url: /pages/tsdoc/tag_returns
+      - title: '@sealed'
+        url: /pages/tsdoc/tag_sealed
+      - title: '@virtual'
+        url: /pages/tsdoc/tag_virtual
+
+  - title: Message Reference
+    subitems:
+      - title: ae-cyclic-inherit-doc
+        url: /pages/messages/ae-cyclic-inherit-doc
+      - title: ae-different-release-tags
+        url: /pages/messages/ae-different-release-tags
+      - title: ae-extra-release-tag
+        url: /pages/messages/ae-extra-release-tag
+      - title: ae-forgotten-export
+        url: /pages/messages/ae-forgotten-export
+      - title: ae-incompatible-release-tags
+        url: /pages/messages/ae-incompatible-release-tags
+      - title: ae-internal-missing-underscore
+        url: /pages/messages/ae-internal-missing-underscore
+      - title: ae-misplaced-package-tag
+        url: /pages/messages/ae-misplaced-package-tag
+      - title: ae-missing-release-tag
+        url: /pages/messages/ae-missing-release-tag
+      - title: ae-preapproved-bad-release-tag
+        url: /pages/messages/ae-preapproved-bad-release-tag
+      - title: ae-preapproved-unsupported-type
+        url: /pages/messages/ae-preapproved-unsupported-type
+      - title: ae-unresolved-inheritdoc-base
+        url: /pages/messages/ae-unresolved-inheritdoc-base
+      - title: ae-unresolved-inheritdoc-reference
+        url: /pages/messages/ae-unresolved-inheritdoc-reference
+      - title: ae-unresolved-link
+        url: /pages/messages/ae-unresolved-link
+
+  - title: Command line
+    subitems:
+      - title: api-extractor.json
+        url: /pages/commands/config_file
+      - title: api-extractor init
+        url: /pages/commands/api-extractor_init
+      - title: api-extractor run
+        url: /pages/commands/api-extractor_run
+      - title: api-documenter markdown
+        url: /pages/commands/api-documenter_markdown
+      - title: api-documenter yaml
+        url: /pages/commands/api-documenter_yaml
 
   - title: Contributing
     subitems:
-      - title: Overview
-        url: /pages/contributing/overview
-
+      - title: Building the code
+        url: /pages/contributing/building
+      - title: Debugging
+        url: /pages/contributing/debugging
+      - title: Architecture notes
+        url: /pages/contributing/architecture
