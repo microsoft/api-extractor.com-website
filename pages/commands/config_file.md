@@ -381,7 +381,7 @@ Example:
 ```
 
 Specifies whether the message should be written to the the tool's output log.  Note that
-the `addToApiReviewFile` property may supersede this option.
+the `addToApiReportFile` property may supersede this option.
 
 Possible values: `"error"`, `"warning"`, `"none"`
 
@@ -389,7 +389,7 @@ Errors cause the build to fail and return a nonzero exit code.  Warnings cause a
 and return a nonzero exit code.  For a non-production build (e.g. when `api-extractor run` includes
 the `--local` option), the warning is displayed but the build will not fail.
 
-### messages.\<section\>.\<rule\>.addToApiReviewFile
+### messages.\<section\>.\<rule\>.addToApiReportFile
 
 Default value: `false`
 
@@ -402,14 +402,14 @@ Example:
         "logLevel": "warning",
 
          // Don't break the build over compiler issues; instead write them to the API report
-        "addToApiReviewFile": true
+        "addToApiReportFile": true
       }
     },
     . . .
   }
 ```
 
-When `addToApiReviewFile` is true:  If API Extractor is configured to write an API report file (.api.md),
+When `addToApiReportFile` is true:  If API Extractor is configured to write an API report file (.api.md),
 then the message will be written inside that file; otherwise, the message is instead logged according to
 the `logLevel` option.
 
@@ -463,23 +463,23 @@ for the complete up-to-date table.)
       },
       "ae-forgotten-export": {
         "logLevel": "warning",
-        "addToApiReviewFile": true
+        "addToApiReportFile": true
       },
       "ae-incompatible-release-tags": {
         "logLevel": "warning",
-        "addToApiReviewFile": true
+        "addToApiReportFile": true
       },
       "ae-internal-missing-underscore": {
         "logLevel": "warning",
-        "addToApiReviewFile": true
+        "addToApiReportFile": true
       },
       "ae-unresolved-inheritdoc-reference": {
         "logLevel": "warning",
-        "addToApiReviewFile": true
+        "addToApiReportFile": true
       },
       "ae-unresolved-inheritdoc-base": {
         "logLevel": "warning",
-        "addToApiReviewFile": true
+        "addToApiReportFile": true
       }
     },
     . . .
