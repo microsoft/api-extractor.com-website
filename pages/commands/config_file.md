@@ -13,11 +13,14 @@ from the source code.
 
 The individual JSON fields are documented below.
 
+* TOC
+{:toc}
+
+
+
 ## Top-level Settings
 
 ### extends
-
-Default value: `""`
 
 Examples:
 ```js
@@ -28,57 +31,84 @@ Examples:
   "extends": "my-package/include/api-extractor-base.json",
 ```
 
+**Default value:** `""`
+
+**Supported tokens:** none
+
 Optionally specifies another JSON config file that this file extends from.  This provides a way for
 standard settings to be shared across multiple projects.
 
-If the path starts with `./` or `../`, the path is resolved relative to the folder of the file with
-the `extends` field.  Otherwise, the first path segment is interpreted as an NPM package name, and will be
-resolved using NodeJS `require()`.
+If the path starts with `./` or `../`, the path is resolved relative to the folder of the file that contains the
+`extends` field.  Otherwise, the first path segment is interpreted as an NPM package name, and will be resolved using
+NodeJS `require()`.
+
+### projectFolder
+
+Example:
+
+```js
+  "projectFolder": "..",
+```
+
+**Default value:** `"<lookup>"`
+
+**Supported tokens:** `<lookup>`
+
+Determines the `<projectFolder>` token that can be used with other config file settings.  The project folder typically
+contains the **tsconfig.json** and **package.json** config files, but the path is user-defined.
+
+The path is resolved relative to the folder of the config file that contains the setting.
+
+The default value for `projectFolder` is the token `<lookup>`, which means the folder is determined by traversing
+parent folders, starting from the folder containing api-extractor.json, and stopping at the first folder that contains
+a **tsconfig.json** file.  If a **tsconfig.json** file cannot be found in this way, then an error will be reported.
 
 
-### mainEntryPointFile
-(REQUIRED)
+### mainEntryPointFilePath
+
+**(REQUIRED)**
 
 Example:
 ```js
-  "mainEntryPointFile": "lib/index.d.ts",
+  "mainEntryPointFilePath": "<projectFolder>/lib/index.d.ts",
 ```
 
-Specifies the .d.ts file to be used as the starting point for analysis.  API Extractor
-analyzes the symbols exported by this module.
+**Supported tokens:** `<projectFolder>`, `<packageName>`, `<unscopedPackageName>`
 
-The file extension must be `.d.ts` and not `.ts`.
-The path is resolved relative to the `rootFolder` location described below.
+Specifies the .d.ts file to be used as the starting point for analysis.  API Extractor analyzes the symbols exported
+by this module.
+
+The file extension must be ".d.ts" and not ".ts".
+
+The path is resolved relative to the folder of the config file that contains the setting; to change this,
+prepend a folder token such as `<projectFolder>`.
+
+
 
 ## Compiler Section
 
 Determines how the TypeScript compiler engine will be invoked by API Extractor.
 
-### compiler.rootFolder
 
-Default value: `"<lookup>"`
+### compiler.tsconfigFilePath
 
 Example:
 ```js
-  "compiler": {
-    "rootFolder": "..",
-    . . .
-  }
+  "tsconfigFilePath": "<projectFolder>/tsconfig.json",
 ```
 
-The root folder for the project.  This folder typically contains the **tsconfig.json** and **package.json**
-config files.
+**Default value:** `"<projectFolder>/tsconfig.json"`
 
-The `rootFolder` path is resolved relative to the folder containing **api-extractor.json**.
+**Supported tokens:** `<projectFolder>`, `<packageName>`, `<unscopedPackageName>`
 
-The default value for `rootFolder` is the token `<lookup>`, which means the folder is determined by traversing
-parent folders, starting from the folder containing **api-extractor.json**, and stopping at the first folder
-that contains a **tsconfig.json** file.  If a **tsconfig.json** file cannot be found in this way, then an error
-will be reported.
+Specifies the path to the tsconfig.json file to be used by API Extractor when analyzing the project.
+
+The path is resolved relative to the folder of the config file that contains the setting; to change this, prepend
+a folder token such as `<projectFolder>`.
+
+Note: This setting will be ignored if `overrideTsconfig` is used.
 
 ### compiler.overrideTsconfig
-
-Default value: *no overrideTsconfig section*
 
 Example:
 ```js
@@ -103,14 +133,16 @@ Example:
   }
 ```
 
-Provides compiler configuration that will be used instead of reading the **tsconfig.json** file from disk.
-The object must conform to the [TypeScript tsconfig schema](http://json.schemastore.org/tsconfig).
+**Default value:** *no overrideTsconfig section*
 
-If omitted, then the **tsconfig.json** file will be read from the `rootFolder`.
+**Supported tokens:** `<projectFolder>`, `<packageName>`, `<unscopedPackageName>`
+
+Provides a compiler configuration that will be used instead of reading the **tsconfig.json** file from disk. The object
+must conform to the [TypeScript tsconfig schema](http://json.schemastore.org/tsconfig).
+
+If omitted, then the **tsconfig.json** file will be read from the `projectFolder`.
 
 ### compiler.skipLibCheck
-
-Default value: `false`
 
 Example:
 ```js
@@ -120,10 +152,14 @@ Example:
   }
 ```
 
-This option causes the compiler to be invoked with the `--skipLibCheck` option. This option is not recommended
-and may cause API Extractor to produce incomplete or incorrect declarations, but it may be required when
-dependencies contain declarations that are incompatible with the TypeScript engine that API Extractor uses
-for its analysis.  Where possible, the underlying issue should be fixed rather than relying on `skipLibCheck`.
+**Default value:** `false`
+
+This option causes the compiler to be invoked with the `--skipLibCheck` option. This option is not recommended and
+may cause API Extractor to produce incomplete or incorrect declarations, but it may be required when dependencies
+contain declarations that are incompatible with the TypeScript engine that API Extractor uses for its analysis.
+Where possible, the underlying issue should be fixed rather than relying on `skipLibCheck`.
+
+
 
 ## API Report Section
 
@@ -131,7 +167,7 @@ Configures how the API report file (\*.api.md) will be generated.
 
 ### apiReport.enabled
 
-(REQUIRED)
+**(REQUIRED)**
 
 Example:
 ```js
@@ -145,8 +181,6 @@ Whether to generate an API report.
 
 ### apiReport.reportFileName
 
-Default value: `"<unscopedPackageName>.api.md"`
-
 Example:
 ```js
   "apiReport": {
@@ -156,6 +190,10 @@ Example:
   }
 ```
 
+**Default value:** `"<unscopedPackageName>.api.md"`
+
+**Supported tokens:** `<packageName>`, `<unscopedPackageName>`
+
 The filename for the API report files.  It will be combined with `reportFolder` or `reportTempFolder` to produce
 a full output filename.
 
@@ -163,37 +201,42 @@ The file extension should be `.api.md`, and the string should not contain a path
 
 ### apiReport.reportFolder
 
-Default value: `"etc/"`
-
 Example:
 ```js
   "apiReport": {
     . . .
-    "reportFolder": "<unscopedPackageName>.api.md",
+    "reportFolder": "<projectFolder>/etc/",
     . . .
   }
 ```
+
+**Default value:** `"<projectFolder>/etc/"`
+
+**Supported tokens:** `<projectFolder>`, `<packageName>`, `<unscopedPackageName>`
 
 Specifies the folder where the API report file is written.  The file name portion is determined by
 the `reportFileName` setting.
 
-The API report file is normally tracked by Git.  Changes to it can be used to trigger a branch policy,
-e.g. for an API review.
+The API report file is normally tracked by Git.  Changes to it can be used to trigger a branch policy, e.g. for
+an API review.
 
-The path is resolved relative to the `rootFolder` location.
+The path is resolved relative to the folder of the config file that contains the setting; to change this,
+prepend a folder token such as `<projectFolder>`.
 
 ### apiReport.reportTempFolder
-
-Default value: `"temp/"`
 
 Example:
 ```js
   "apiReport": {
     . . .
-    "reportFolder": "<unscopedPackageName>.api.md",
+    "reportTempFolder": "<projectFolder>/temp/",
     . . .
   }
 ```
+
+**Default value:** `"<projectFolder>/temp/"`
+
+**Supported tokens:** `<projectFolder>`, `<packageName>`, `<unscopedPackageName>`
 
 Specifies the folder where the temporary report file is written.  The file name portion is determined by
 the `reportFileName` setting.
@@ -201,15 +244,18 @@ the `reportFileName` setting.
 After the temporary file is written to disk, it is compared with the file in the `reportFolder`.
 If they are different, a production build will fail.
 
-The path is resolved relative to the `rootFolder` location.
+The path is resolved relative to the folder of the config file that contains the setting; to change this,
+prepend a folder token such as `<projectFolder>`.
 
-## API Report Section
+
+
+## Doc Model Section
 
 Configures how the doc model file (\*.api.json) will be generated.
 
 ### docModel.enabled
 
-(REQUIRED)
+**(REQUIRED)**
 
 Example:
 ```js
@@ -219,24 +265,28 @@ Example:
   }
 ```
 
-Whether to generate doc model file.
+Whether to generate a doc model file.
 
 ### docModel.apiJsonFilePath
 
-Default value: `"temp/<unscopedPackageName>.api.json"`
-
 Example:
 ```js
-  "apiReport": {
+  "docModel": {
     . . .
-    "apiJsonFilePath": "temp/<unscopedPackageName>.api.json",
+    "apiJsonFilePath": "<projectFolder>/temp/<unscopedPackageName>.api.json",
     . . .
   }
 ```
 
+**Default value:** `"<projectFolder>/temp/<unscopedPackageName>.api.json"`
+
+**Supported tokens:** `<projectFolder>`, `<packageName>`, `<unscopedPackageName>`
+
 The output path for the doc model file.  The file extension should be `.api.json`.
 
-The path is resolved relative to the `rootFolder` location.
+The path is resolved relative to the folder of the config file that contains the setting; to change this,
+prepend a folder token such as `<projectFolder>`.
+
 
 
 ## .d.ts Rollup Section
@@ -245,7 +295,7 @@ Configures how the .d.ts rollup file will be generated.
 
 ### dtsRollup.enabled
 
-(REQUIRED)
+**(REQUIRED)**
 
 Example:
 ```js
@@ -259,63 +309,73 @@ Whether to generate the .d.ts rollup file.
 
 ### dtsRollup.untrimmedFilePath
 
-Default value: `"dist/<unscopedPackageName>.d.ts"`
-
 Example:
 ```js
   "dtsRollup": {
     . . .
-    "untrimmedFilePath": "dist/<unscopedPackageName>.d.ts",
+    "untrimmedFilePath": "<projectFolder>/dist/<unscopedPackageName>.d.ts",
     . . .
   }
 ```
+
+**Default value:** `"<projectFolder>/dist/<unscopedPackageName>.d.ts"`
+
+**Supported tokens:** `<projectFolder>`, `<packageName>`, `<unscopedPackageName>`
 
 Specifies the output path for a .d.ts rollup file to be generated without any trimming.
 This file will include all declarations that are exported by the main entry point.
 
 If the path is an empty string, then this file will not be written.
 
-The path is resolved relative to the `rootFolder` location.
+The path is resolved relative to the folder of the config file that contains the setting; to change this,
+prepend a folder token such as `<projectFolder>`.
 
 ### dtsRollup.betaTrimmedFilePath
-
-Default value: `""`
 
 Example:
 ```js
   "dtsRollup": {
     . . .
-    "betaTrimmedFilePath": "dist/<unscopedPackageName>-beta.d.ts",
+    "betaTrimmedFilePath": "<projectFolder>/dist/<unscopedPackageName>-beta.d.ts",
     . . .
   }
 ```
+
+**Default value:** `"<projectFolder>/dist/<unscopedPackageName>-beta.d.ts"`
+
+**Supported tokens:** `<projectFolder>`, `<packageName>`, `<unscopedPackageName>`
 
 Specifies the output path for a .d.ts rollup file to be generated with trimming for a "beta" release.
 This file will include only declarations that are marked as `@public` or `@beta`.
 
 If the path is an empty string, then this file will not be written.
 
-The path is resolved relative to the `rootFolder` location.
+The path is resolved relative to the folder of the config file that contains the setting; to change this,
+prepend a folder token such as `<projectFolder>`.
 
 ### dtsRollup.publicTrimmedFilePath
-
-Default value: `""`
 
 Example:
 ```js
   "dtsRollup": {
     . . .
-    "publicTrimmedFilePath": "dist/<unscopedPackageName>-public.d.ts",
+    "publicTrimmedFilePath": "<projectFolder>/dist/<unscopedPackageName>-public.d.ts",
     . . .
   }
 ```
+
+**Default value:** `"<projectFolder>/dist/<unscopedPackageName>-public.d.ts"`
+
+**Supported tokens:** `<projectFolder>`, `<packageName>`, `<unscopedPackageName>`
 
 Specifies the output path for a .d.ts rollup file to be generated with trimming for a "public" release.
 This file will include only declarations that are marked as `@public`.
 
 If the path is an empty string, then this file will not be written.
 
-The path is resolved relative to the `rootFolder` location.
+The path is resolved relative to the folder of the config file that contains the setting; to change this,
+prepend a folder token such as `<projectFolder>`.
+
 
 
 ## TSDoc Metadata Section
@@ -323,8 +383,6 @@ The path is resolved relative to the `rootFolder` location.
 Configures how the **tsdoc-metadata.json** file will be generated.
 
 ### tsdocMetadata.enabled
-
-Default value: `true`
 
 Example:
 ```js
@@ -334,26 +392,34 @@ Example:
   }
 ```
 
+**Default value:** `true`
+
 Whether to generate the **tsdoc-metadata.json** file.
 
 ### tsdocMetadata.tsdocMetadataFilePath
-
-Default value: `"<lookup>"`
 
 Example:
 ```js
   "tsdocMetadata": {
     . . .
-    "tsdocMetadataFilePath": "dist/tsdoc-metadata.json",
+    "tsdocMetadataFilePath": "<projectFolder>/dist/tsdoc-metadata.json",
     . . .
   }
 ```
 
+**Default value:** `"<lookup>"`
+
+**Supported tokens:** `<projectFolder>`, `<packageName>`, `<unscopedPackageName>`
+
 Specifies where the TSDoc metadata file should be written.
 
+The path is resolved relative to the folder of the config file that contains the setting; to change this,
+prepend a folder token such as `<projectFolder>`.
+
 The default value is `<lookup>`, which causes the path to be automatically inferred from the `tsdocMetadata`,
-`typings` or `main` fields of the project's **package.json**.  If none of these fields are set, the lookup
-falls back to **tsdoc-metadata.json** in the package folder.
+`typings` or `main` fields of the project's package.json.  If none of these fields are set, the lookup
+falls back to `tsdoc-metadata.json` in the package folder.
+
 
 
 ## Message Reporting Section
@@ -363,8 +429,6 @@ Configures how API Extractor reports error and warning messages produced during 
 There are three sources of messages:  compiler messages, API Extractor messages, and TSDoc messages.
 
 ### messages.\<section\>.\<rule\>.logLevel
-
-Default value: `"warning"`
 
 Example:
 
@@ -380,18 +444,18 @@ Example:
   }
 ```
 
+**Default value:** `"warning"`
+
+**Possible values:** `"error"`, `"warning"`, `"none"`
+
 Specifies whether the message should be written to the the tool's output log.  Note that
 the `addToApiReportFile` property may supersede this option.
-
-Possible values: `"error"`, `"warning"`, `"none"`
 
 Errors cause the build to fail and return a nonzero exit code.  Warnings cause a production build fail
 and return a nonzero exit code.  For a non-production build (e.g. when `api-extractor run` includes
 the `--local` option), the warning is displayed but the build will not fail.
 
 ### messages.\<section\>.\<rule\>.addToApiReportFile
-
-Default value: `false`
 
 Example:
 
@@ -409,24 +473,13 @@ Example:
   }
 ```
 
+**Default value:** `false`
+
 When `addToApiReportFile` is true:  If API Extractor is configured to write an API report file (.api.md),
 then the message will be written inside that file; otherwise, the message is instead logged according to
 the `logLevel` option.
 
 ### messages.compilerMessageReporting
-
-Default:
-
-```js
-  "messages": {
-    "compilerMessageReporting": {
-      "default": {
-        "logLevel": "warning"
-      }
-    },
-    . . .
-  }
-```
 
 Example:
 
@@ -442,6 +495,19 @@ Example:
   }
 ```
 
+**Default value:**
+
+```js
+  "messages": {
+    "compilerMessageReporting": {
+      "default": {
+        "logLevel": "warning"
+      }
+    },
+    . . .
+  }
+```
+
 Configures handling of diagnostic messages reported by the TypeScript compiler engine while analyzing
 the input .d.ts files.
 
@@ -450,9 +516,26 @@ TypeScript message identifiers start with `TS` followed by an integer.  For exam
 
 ### messages.extractorMessageReporting
 
-Default: (See [api-extractor-defaults.json](
+Example:
+
+```js
+  "messages": {
+    . . .
+    "extractorMessageReporting": {
+      "ae-extra-release-tag": {
+        // Completely disable the "ae-extra-release-tag" validation
+        "logLevel": "none"
+      },
+    },
+    . . .
+  }
+```
+
+**Default value:**
+
+*(See [api-extractor-defaults.json](
 https://github.com/Microsoft/web-build-tools/blob/master/apps/api-extractor/src/schemas/api-extractor-defaults.json)
-for the complete up-to-date table.)
+for the complete up-to-date table.)*
 
 ```js
   "messages": {
@@ -486,40 +569,11 @@ for the complete up-to-date table.)
   }
 ```
 
-Example:
-
-```js
-  "messages": {
-    . . .
-    "extractorMessageReporting": {
-      "ae-extra-release-tag": {
-        // Completely disable the "ae-extra-release-tag" validation
-        "logLevel": "none"
-      },
-    },
-    . . .
-  }
-```
-
 Configures handling of messages reported by API Extractor during its analysis.
 
 API Extractor message identifiers start with `ae-`.  For example: `ae-extra-release-tag`
 
-
 ### messages.tsdocMessageReporting
-
-Default:
-
-```js
-  "messages": {
-    . . .
-    "tsdocMessageReporting": {
-      "default": {
-        "logLevel": "warning"
-      }
-    }
-  }
-```
 
 Example:
 
@@ -531,6 +585,19 @@ Example:
         // Completely disable the "tsdoc-link-tag-unescaped-text" validation
         "logLevel": "none"
       },
+    }
+  }
+```
+
+**Default value:**
+
+```js
+  "messages": {
+    . . .
+    "tsdocMessageReporting": {
+      "default": {
+        "logLevel": "warning"
+      }
     }
   }
 ```
