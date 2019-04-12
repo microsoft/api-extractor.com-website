@@ -17,8 +17,8 @@ in some other location.
 
 Move the comment to the top of the file.
 
-> Be aware that the TypeScript compiler can delete or rearrange comment blocks when emitting the .d.ts files.
 > When investigating this issue, it's better to inspect your entry point's .d.ts file instead of the .ts file.
+> The TypeScript compiler can remove or rearrange comment blocks in the emitted .d.ts files.
 
 ## See also
 

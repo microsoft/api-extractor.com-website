@@ -8,7 +8,11 @@ navigation_source: docs_nav
 
 ## Remarks
 
+The `@preapproved` tag is only supported for declarations that are marked as `@internal`.
+
 ## How to fix
+
+Remove the `@preapproved` tag.
 
 ## See also
 

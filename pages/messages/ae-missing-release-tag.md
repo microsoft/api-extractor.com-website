@@ -54,9 +54,9 @@ has several benefits:
 - When adding a new export, choosing a release tag requires the person to stop and think about visibility:  How mature
   is this API design?  Should it really be `@public`, or should we maybe start with `@alpha` or `@beta`?
 
-- It avoids accidents.  For example, it might be embarassing one day to be browsing your API web site, and
-  come across an internal class that got included unintentionally. Uh oh, the documentation was generated from private
-  code comments that nobody expected to share with a public audience!
+- It avoids accidents.  For example, it might be embarrassing to be browsing your API web site one day, and
+  discover an internal class that got included unintentionally. The content may have been generated from private
+  code comments that nobody intended to share with a public audience!
 
 ## How to fix
 

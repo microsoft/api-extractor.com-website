@@ -8,7 +8,18 @@ navigation_source: docs_nav
 
 ## Remarks
 
+The `@preapproved` tag is only supported for the following types of declarations:
+
+- classes
+- enums
+- interfaces
+- namespaces
+
+The types are supported because they are nesting containers whose members can have frequent changes.
+
 ## How to fix
+
+Remove the `@preapproved` tag.
 
 ## See also
 
