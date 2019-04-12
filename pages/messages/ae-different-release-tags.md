@@ -25,6 +25,8 @@ interface Size {
 function Size(width: number, height: number): Size {
     return { width, height };
 }
+
+// Warning: This symbol has another declaration with a different release tag.
 ```
 
 In the example above, the `Size` symbol has an interface declaration that is marked as `@public`, but a function

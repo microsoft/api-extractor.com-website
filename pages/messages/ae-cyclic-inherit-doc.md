@@ -20,6 +20,8 @@ The self-reference can be simple:
  * @public
  */
 export function f1(): void { }
+
+// Warning: The "@inheritDoc" tag for "f1" refers to its own declaration.
 ```
 
 Or it can be indirect:
@@ -42,6 +44,8 @@ export function f2(): void { }
  * @public
  */
 export function f3(): void { }
+
+// Warning: The "@inheritDoc" tag for "f1" refers to its own declaration.
 ```
 
 ## How to fix

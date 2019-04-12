@@ -34,6 +34,8 @@ interface IShowReportOptions {
  */
 export function showReport(options: IShowReportOptions): void {
 }
+
+// Warning: "The symbol "IShowReportOptions" needs to be exported by the entry point src/index.d.ts."
 ```
 
 In the example above, type signature for `showReport()` refers to an interface `IShowReportOptions` that is not
@@ -68,9 +70,11 @@ to be exported by the main entry point.
 Use the `export` keyword to export the declaration from the main entry point file (as specified by
 the `mainEntryPointFilePath` setting).
 
-Alternatively, if this design change would be too disruptive, you could choose to ignore the message:
-As long as `apiReport.enabled` is set to `true` in your configuration, the message will be written into
-the API report for tracking purposes.  It does not issue a warning that would break the build.
+Alternatively, if changing your API signature would be too disruptive, you can simply choose to ignore this message.
+By default it uses `addToApiReportFile` reporting, which means that it will be written into your API report
+for tracking purposes.  It will not produce a console warning and thus will NOT break your build
+(assuming that you have `apiReport.enabled` set to true).
+
 
 ## See also
 

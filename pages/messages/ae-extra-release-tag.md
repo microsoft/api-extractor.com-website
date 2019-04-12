@@ -24,6 +24,8 @@ Example:
  * @public @public
  */
 export function f1(): void { }
+
+// Warning: The doc comment should not contain more than one release tag.
 ```
 
 In the example above, the `@public` release tag appears twice, so the error is reported.
