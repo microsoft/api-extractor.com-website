@@ -58,23 +58,25 @@ docs_nav:
       - title: '@deprecated'
         url: /pages/tsdoc/tag_deprecated
       - title: '@eventProperty'
-        url: /pages/tsdoc/tag_eventProperty
+        url: /pages/tsdoc/tag_eventproperty
       - title: '@example'
         url: /pages/tsdoc/tag_example
       - title: '{@inheritDoc}'
-        url: /pages/tsdoc/tag_inheritDoc
+        url: /pages/tsdoc/tag_inheritdoc
+      - title: '@internal'
+        url: /pages/tsdoc/tag_internal
       - title: '{@link}'
         url: /pages/tsdoc/tag_link
       - title: '@override'
         url: /pages/tsdoc/tag_override
       - title: '@packageDocumentation'
-        url: /pages/tsdoc/tag_packageDocumentation
+        url: /pages/tsdoc/tag_packagedocumentation
       - title: '@param'
         url: /pages/tsdoc/tag_param
       - title: '@preapproved'
         url: /pages/tsdoc/tag_preapproved
       - title: '@privateRemarks'
-        url: /pages/tsdoc/tag_privateRemarks
+        url: /pages/tsdoc/tag_privateremarks
       - title: '@public'
         url: /pages/tsdoc/tag_public
       - title: '@readonly'
