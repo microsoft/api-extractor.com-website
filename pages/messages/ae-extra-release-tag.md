@@ -33,3 +33,7 @@ In the example above, the `@public` release tag appears twice, so the error is r
 ## How to fix
 
 Remove the extra release tags.
+
+## See also
+
+- [Doc Comment Syntax: Release tags]({% link pages/tsdoc/doc_comment_syntax.md %}#release-tags)

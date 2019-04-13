@@ -17,13 +17,13 @@ Example:
 ```ts
 /** @public */
 interface Size {
-    width: number;
-    height: number;
+  width: number;
+  height: number;
 }
 
 /** @beta */
 function Size(width: number, height: number): Size {
-    return { width, height };
+  return { width, height };
 }
 
 // Warning: This symbol has another declaration with a different release tag.
@@ -31,7 +31,6 @@ function Size(width: number, height: number): Size {
 
 In the example above, the `Size` symbol has an interface declaration that is marked as `@public`, but a function
 declaration that is marked as `@beta`, so the `ae-different-release-tags` error is reported.
-
 
 > It would be possible for API Extractor to allow different release tags for certain types of declarations,
 > and this could be very useful.  GitHub [issue #972](https://github.com/Microsoft/web-build-tools/issues/972)
@@ -41,3 +40,6 @@ declaration that is marked as `@beta`, so the `ae-different-release-tags` error 
 
 Change the symbol's declarations to have the same release tag.
 
+## See also
+
+- [Doc Comment Syntax: Release tags]({% link pages/tsdoc/doc_comment_syntax.md %}#release-tags)

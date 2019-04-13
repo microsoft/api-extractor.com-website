@@ -45,10 +45,12 @@ docs_nav:
       - title: Getting Help
         url: /pages/setup/help
 
-  - title: TSDoc Reference
+  - title: Doc Comment Syntax
     subitems:
-      - title: Doc Comment Syntax
+      - title: Overview
         url: /pages/tsdoc/doc_comment_syntax
+      - title: Declaration references
+        url: /pages/tsdoc/declaration_references
       - title: '@alpha'
         url: /pages/tsdoc/tag_alpha
       - title: '@beta'
