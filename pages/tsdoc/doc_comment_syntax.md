@@ -5,17 +5,18 @@ navigation_source: docs_nav
 ---
 
 API Extractor parses your TypeScript code comments to obtain documentation and additional type information.
-It expects your code comments to use TSDoc.  We won't provide a full description of the TSDoc syntax here;
+It expects your code comments to use TSDoc format.  We won't provide a full description of the grammar here;
 instead, please refer to the [TSDoc project](https://github.com/Microsoft/tsdoc).)  If you've used
 JSDoc for JavaScript source code, TSDoc will be very similar, but be aware that there are some syntax differences.
 
 The TSDoc language can be extended by defining custom tags.  API Extractor's particular dialect of TSDoc is
-referred to as "**AEDoc**".  (Support for TSDoc was introduced with API Extractor 6.x.  In earlier releases, API Extractor
-used a proprietary syntax that was also called as "AEDoc", but this is now obsolete.)
+referred to as "**AEDoc**".  (Support for TSDoc was introduced with API Extractor 6.x.  In earlier releases,
+API Extractor used a proprietary syntax that was also called as "AEDoc", but this is now obsolete.)
 
-**TSDoc Playground:** By the way, the [TSDoc Playground](https://microsoft.github.io/tsdoc/) website provides an
-interactive way to experiment with code comments to see how they will be parsed.  Give it a try!
-
+> **TSDoc Playground**
+>
+> By the way, the [TSDoc Playground](https://microsoft.github.io/tsdoc/) website provides an
+> interactive way to experiment with code comments to see how they will be parsed.  Give it a try!
 
 ## Which comments are parsed by API Extractor?
 
@@ -59,12 +60,12 @@ The overall anatomy of a TSDoc comment has these components:
   by a block tag such as `@param`, `@returns`, `@example`, etc.
 - **Modifier tags:** The modifier tags typically come last.  Modifier tags don't have an associated block of content;
   instead, their presence indicates an aspect of the declaration.  Some examples of modifier tags are: `@public`,
-  `@readonly`, `@virtual`.
-- **Inline tags:** Inline tags appear inside a section, and are always delimited by `{` and `}` characters.
+  `@beta`, and `@virtual`.
+- **Inline tags:** Inline tags can appear inside any section, and are always delimited by `{` and `}` characters.
   Additional content can appear after the tag name and before the `}` delimiter.  Its format is tag-specific.
   Examples of inline tags are `{@link}` and `{@inheritDoc}`.
 
-Here's some sample code that illustrates the doc comment syntax:
+Here's some sample code that illustrates all the various components of the doc comment syntax:
 
 ```ts
 /**
@@ -75,30 +76,50 @@ Here's some sample code that illustrates the doc comment syntax:
  *
  * @public
  */
-abstract class BaseWidget {
+export abstract class BaseWidget {
   /**
    * Draws the widget.
+   * @remarks
+   *
+   * The `draw` member implements the main rendering for a widget.
+   *
    * @param force - whether to force redrawing
    * @returns true, if rendering occurred; false, if the view was already up to date
+   *
+   * @beta @virtual
    */
   public draw(force: boolean): boolean {
-    ...
+    . . .
   }
+
+  /**
+   * Whether the widget is currently visible.
+   *
+   * @example
+   * Here's some example code to hide a widget:
+   *
+   * ```ts
+   * let myWidget = new MyWidget();
+   * myWidget.visible = false;
+   * ```
+   *
+   * @defaultValue `true`
+   */
+  public visible: boolean = true;
 
   /**
    * Gets or set the title of this widget
    */
   public get title(): string {
-    ...
+    . . .
   }
 
   // NOTE: API Extractor considers your property getter and setter functions to be
   // a single API item.  Don't write any documentation for the setter.
   public set title(value: string) {
-    ...
+    . . .
   }
 }
-
 ```
 
 ## Release tags
@@ -114,12 +135,13 @@ to its intended level of support:
 - **alpha**: Indicates that an API item is eventually intended to be public, but currently is in an early stage
   of development.  Third parties should not use "alpha" APIs.
 
-- **beta**: Indicates that an API item has been released in an experimental state.  Third parties are encouraged to
-  try it and provide feedback.  However, a "beta" API should NOT be used in production, because it may be changed
-  or removed in a future version.
+- **beta**: Indicates that an API item has been released as a preview or for experimental purposes.  Third parties
+  are encouraged to try it and provide feedback.  However, a "beta" API should NOT be used in production, because
+  it may be changed or removed in a future version.
 
-- **public**:  Indicates that an API item has been officially released.  It is part of the supported contract
-  (e.g. [SemVer](https://semver.org/) model) for a package.
+- **public**:  Indicates that an API item has been officially released, and is now part of the supported contract
+  for a package.  If the [SemVer](https://semver.org/) versioning scheme is used, then the API signature cannot
+  be changed without a MAJOR version increment.
 
 > NOTE: TypeScript's `public`/`protected`/`private` keywords are unrelated to the AEDoc release tags.
 > For example, a member function will typically have the `public` TypeScript keyword regardless of whether
