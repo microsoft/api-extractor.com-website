@@ -27,7 +27,7 @@ docs_nav:
         url: /pages/overview/demo_api_report
       - title: The .d.ts rollup
         url: /pages/overview/demo_rollup
-      - title: The API docs
+      - title: API Documentation
         url: /pages/overview/demo_docs
 
   - title: Setting up your project

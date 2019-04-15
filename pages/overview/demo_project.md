@@ -1,12 +1,14 @@
 ---
 layout: page
-title: Feature Walkthrough
+title: A sample projuect
 navigation_source: docs_nav
 ---
 
-## Example TypeScript project
+*This article continues the tutorial from the "[What is API Extractor?]({% link pages/overview/intro.md %})" page.  It's recommended to start there.*
 
-This walkthrough is based on a real-world NPM package **@microsoft/sp-core-library**.  Its entry point is *src/index.ts*:
+For this tutorial, we'll consider a hypothetical TypeScript library project.  The declarations are taken from
+a real-world NPM package **@microsoft/sp-core-library**.  Its main entry point is *src/index.ts*, which contains
+export statements like this:
 
 **src/index.ts**<br/>
 ```ts
@@ -46,13 +48,13 @@ export default class Log {
    * @param   message - the message to be logged
    *          If the message's length is more than 100, only the first 100 characters are kept.
    */
-  public static verbose(source: string, message: string, scope?: ServiceScope): void {
-    this._logHandler.verbose(source, message, scope);
+  public static verbose(source: string, message: string): void {
+    this._logHandler.verbose(source, message);
   }
 
   . . .
   public static info(source: string, message: string): void {
-    this._logHandler.info(source, message, scope);
+    this._logHandler.info(source, message);
   }
 
   . . .
@@ -87,4 +89,7 @@ export default ILogHandler;
 **src/log/DefaultLogHandler.ts**<br/>
 *(private in this example, so its implementation is unimportant and left to your imagination.)*
 
+Let's examine how API Extractor processes these inputs to produce the API report, d.ts rollup, and API documentation
+outputs...
 
+#### Next up: [The API report]({% link pages/overview/demo_api_report.md %})

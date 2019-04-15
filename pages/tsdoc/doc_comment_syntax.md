@@ -161,7 +161,7 @@ each member function.  However, you could add `@internal` to a member function t
 > of a `@beta` class, then the internal function SHOULD have an underscore prefix.
 
 Lastly, note that certain logical rules apply.  For example, a `@public` function should not return a `@beta` type.
-A `@beta` class should not inherit from an `@internal` base class.  etc.  **API Extractor** does not currently validate
+A `@beta` class should not inherit from an `@internal` base class.  etc.  API Extractor does not currently validate
 these rules, but it will soon.
 
 ## See also

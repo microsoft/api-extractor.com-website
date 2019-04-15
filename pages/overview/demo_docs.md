@@ -1,79 +1,120 @@
 ---
 layout: page
-title: The API docs
+title: API Documentation
 navigation_source: docs_nav
 ---
 
+*This article continues the tutorial from the "[What is API Extractor?]({% link pages/overview/intro.md %})" page.  It's recommended to start there.*
 
-## The API JSON File (*.api.json)
+The final API Extractor output that we'll look at is the "**doc model**" file.  This JSON file captures
+the API signatures and doc comments for a project that was processed by API Extractor.  It contains all the
+information needed to generate an API reference website.  This can be done using the basic [api-documenter](
+https://www.npmjs.com/package/@microsoft/api-documenter) tool that comes with API Extractor, or you can
+use it as an input for your own custom pipeline.
 
-For each project, **API Extractor** also outputs a JSON file that can be used to generate online documentation using the [api-documenter tool]({% link pages/setup/generating_docs.md %}).  For example, our **sp-core-library** gets rendered [like this](https://docs.microsoft.com/en-us/javascript/api/sp-core-library).
+The real **@microsoft/sp-core-library** gets rendered using Microsoft's custom DocFX engine.
+Here's the final result:
 
-However, this is just one possibility.  The API JSON files have a simple format can be easily adapted to work with any documentation templating system.  Here is an example excerpt for the `Log` class:
+[https://docs.microsoft.com/en-us/javascript/api/sp-core-library](
+https://docs.microsoft.com/en-us/javascript/api/sp-core-library)
 
-```json
+
+## A closer look at the JSON file
+
+Since the NPM package name for our example project is **@microsoft/sp-core-library**, the default path for this
+output will be **temp/sp-core-library.api.json**.  The file is fairly large, but here's an excerpt
+corresponding to the `ILogHandler.error` member, which should give an idea of the file structure:
+
+**temp/sp-core-library.api.json**<br/>
+```js
 {
-  "kind": "package",
-  "summary": [],
-  "remarks": [],
-  "exports": {
-    "Log": {
-      "kind": "class",
-      "extends": "",
-      "implements": "",
-      "typeParameters": [],
-      "deprecatedMessage": [],
-      "summary": [
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.1.0",
+    "schemaVersion": 1000
+  },
+  "kind": "Package",
+  "canonicalReference": "@microsoft/sp-core-library",
+  "docComment": "",
+  "name": "@microsoft/sp-core-library",
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "",
+      "name": "",
+      "members": [
         {
-          "kind": "textDocElement",
-          "value": "The Log class provides static methods for logging messages at different levels (verbose, info, warning, error) and with context information. Context information helps identify which component generated the messages and makes the messages useful and filterable."
-        }
-      ],
-      "remarks": [],
-      "isBeta": false,
-      "members": {
-        "verbose": {
-          "kind": "method",
-          "signature": "public static verbose(source: string, message: string, scope?: ServiceScope): void;",
-          "accessModifier": "public",
-          "isOptional": false,
-          "isStatic": true,
-          "returnValue": {
-            "type": "void",
-            "description": []
-          },
-          "parameters": {
-            "source": {
-              "name": "source",
-              "description": [
+          "kind": "Interface",
+          "canonicalReference": "(ILogHandler:interface)",
+          "docComment": "/**\n * The redirectable implementation for the Log class.\n *\n * @beta\n */\n",
+          "releaseTag": "Beta",
+          "name": "ILogHandler",
+          "members": [
+            {
+              "kind": "MethodSignature",
+              "canonicalReference": "(error:0)",
+              "docComment": "",
+              "excerptTokens": [
                 {
-                  "kind": "textDocElement",
-                  "value": "the source from where the message is logged, e.g., the class name. The source provides context information for the logged message. If the source's length is more than 20, only the first 20 characters are kept."
+                  "kind": "Reference",
+                  "text": "error"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                . . .
+              ],
+              "returnTypeTokenRange": {
+                "startIndex": 10,
+                "endIndex": 11
+              },
+              "releaseTag": "Beta",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "source",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                },
+                {
+                  "parameterName": "error",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  }
                 }
               ],
-              "isOptional": false,
-              "isSpread": false,
-              "type": "string"
-            }
-          },
-          "deprecatedMessage": [],
-          "summary": [
-            {
-              "kind": "textDocElement",
-              "value": "Logs a verbose message"
-            }
+              "name": "error"
+            },
+            . . .
           ],
-          "remarks": [],
-          "isBeta": false
+          "extendsTokenRanges": []
         },
-      }
+        . . .
+      ]
     }
-  }
+  ]
 }
 ```
 
-Complete documentation of this file format is provided in the JSON Schema [api-json-schema.json](https://raw.githubusercontent.com/Microsoft/web-build-tools/master/apps/api-extractor/src/api/api-json.schema.json), which every API JSON file conforms to.
+Hmm, well that was interesting...  but there's some good news:  **You don't need to write your own parser for this
+complex file format!**  The [@microsoft/api-extractor-model](
+https://www.npmjs.com/package/@microsoft/api-extractor-model) package already provides a complete library for reading,
+querying, modifying, and saving this file format.  If you want to roll your own TypeScript documentation generation,
+have fun!  :-)
 
-The API JSON file does not need to be tracked by Git.  However, it should be included with your other outputs when publishing an NPM package, because **api-extractor** will use it to resolve `{@inheritdoc}` and `{@link}` references for projects that consume your library.
+## Documenting multiple projects together
 
-#### Next up: [The API report]({% link pages/overview/demo_api_report.md %})
+A major advantage of this intermediary JSON file is that it allows a collection of related projects to be built
+separately, but documented as a group.  This is particularly useful at a large company, where individual
+projects may be owned by different teams, perhaps working in separate Git repos, perhaps using different toolchains,
+perhaps released on different timelines.  Regardless of how the JSON files are produced, they can be collected
+together in a central location, and then a tool such as **api-documenter** can load them into a single "model"
+and generate an integrated website, complete with cross-package hyperlinks and an integrated navigation tree.
+
+This concludes our quick tour of the three major use cases for API Extractor.  Ready to get started?
+
+#### Next up: [Invoking API Extractor]({% link pages/setup/invoking.md %})

@@ -4,26 +4,39 @@ title: The .d.ts rollup
 navigation_source: docs_nav
 ---
 
-## The *.d.ts Rollup File
+*This article continues the tutorial from the "[What is API Extractor?]({% link pages/overview/intro.md %})" page.  It's recommended to start there.*
+
+The next API Extractor output that we'll discuss is the "**.d.ts rollup**."  Recall that our example project
+has these TypeScript source files:
+
+<b>
+src/index.ts<br/>
+src/log/Log.ts<br/>
+src/log/ILogHandler.ts<br/>
+</b>
 
 Each of the above files builds into a corresponding set of intermediary outputs:
 
-<i>
+<b>
 lib/index.d.ts<br/>
 lib/index.js<br/>
 lib/log/Log.d.ts<br/>
 lib/log/Log.js<br/>
 lib/log/ILogHandler.d.ts<br/>
 lib/log/ILogHandler.js<br/>
-. . .
-</i>
+</b>
 
-We can use a linker such as [Webpack](https://webpack.js.org) to roll up the \*.js files into a single output:  **dist/sp-core-library.js**
+We can use a linker such as [Webpack](https://webpack.js.org) to roll up the \*.js files into a combined
+bundle file: **dist/sp-core-library.js**
 
-In the same way, **API Extractor** can produce a rollup for your \*.d.ts files: **dist/sp-core-library.d.ts**
+In the same way, API Extractor can produce a rollup for your \*.d.ts files: **dist/sp-core-library.d.ts**
 
-Optionally, we can enable \*.d.ts trimming to exclude the `@beta` members from the rollup file.  The result might look like this:
+Optionally, we can also enable .d.ts "trimming" which excludes the declarations marked as `@beta`
+from appearing in the rollup file: **dist/sp-core-library-public.d.ts**
 
+The trimmed file contents would look like this:
+
+**dist/sp-core-library-public.d.ts**
 ```ts
 /* Excluded from this release type: ILogHandler */
 
@@ -59,6 +72,22 @@ export declare class Log {
 }
 ```
 
-With this feature, when developers are targeting production, they no longer have to worry about accidentally taking a dependency on your unstable **initialize()** function. It won't even appear in their VS Code IntelliSense!  They would need to explicitly opt-in to the "beta" release to get those definitions. (Similarly, `@internal` and `@alpha` APIs would only be accessible to first-party developers who are targeting an "internal" release.)
+With trimming enabled, developers no longer have to worry about accidentally taking a dependency on the
+unstable `Log.initialize()` function when they are targeting production.  That function won't even appear
+in their VS Code IntelliSense!  If they want to use the `@beta` APIs, they would explicitly opt-in to a
+"beta" release.  For the real **@microsoft/sp-core-library** package, "opting in" is accomplished by installing
+[a special version number](https://www.npmjs.com/package/@microsoft/sp-core-library?activeTab=versions)
+with the `-plusbeta` suffix (however other approaches are possible as well).
 
+API Extractor's .d.ts rollup feature is fairly sophisticated.  For example, it supports:
 
+- declarations whose exported name is different from the original definition
+- types imported from other packages
+- `export * from` relationships with other packages
+- merged declarations
+
+One significant limitation for .d.ts rollups is the assumption that your package has a single entry point.
+(If that's not the case, you probably won't be able to use this feature of API Extractor, although you can still
+use the API report and documentation generation features.)
+
+#### Next up: [The API docs]({% link pages/overview/demo_docs.md %})

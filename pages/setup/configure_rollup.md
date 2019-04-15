@@ -61,7 +61,7 @@ Full example:
 }
 ```
 
-When you invoke **API Extractor**, it will now generate the **dist/my-project.d.ts** file as part of its output.  For a working example, take a look at the [build-tests/api-extractor-test-01](https://github.com/Microsoft/web-build-tools/tree/master/build-tests/api-extractor-test-01) project.
+When you invoke API Extractor, it will now generate the **dist/my-project.d.ts** file as part of its output.  For a working example, take a look at the [build-tests/api-extractor-test-01](https://github.com/Microsoft/web-build-tools/tree/master/build-tests/api-extractor-test-01) project.
 
 To learn about other configuration options that control the rollups, see the [IExtractorDtsRollupConfig](https://github.com/Microsoft/web-build-tools/blob/master/apps/api-extractor/src/extractor/IExtractorConfig.ts) interface documentation.
 
@@ -81,7 +81,7 @@ This is an advanced scenario that assumes you will be publishing parallel releas
 
 
 
-Configuring **API Extractor** for this is actually fairly easy -- simply set `trimming` to **true** in the **api-extractor.json** config file seen above.  (For **gulp-core-build**,  instead set `dtsRollupTrimming` to **true**.)  Also update your `typings` field in **package.json** to something like **dist/internal/my-project.d.ts**.
+Configuring API Extractor for this is actually fairly easy -- simply set `trimming` to **true** in the **api-extractor.json** config file seen above.  (For **gulp-core-build**,  instead set `dtsRollupTrimming` to **true**.)  Also update your `typings` field in **package.json** to something like **dist/internal/my-project.d.ts**.
 
 The real work item is to set up your build process to write corresponding outputs into the three separate folders.  Typically the operation would go like this:
 

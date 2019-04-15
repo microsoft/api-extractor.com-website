@@ -55,14 +55,14 @@ For more information about command-line options, try: `api-extractor run -h`
 
 
 
->  **IMPORTANT:**  You must compile your project before invoking **API Extractor**.  As of version 5, **api-extractor** processes the compiler's \*.d.ts outputs, not your TypeScript source files.  (This change makes it easier to support non-TypeScript projects that emit typings as output, and it also simplifies the \*.d.ts rollup stage.)
+>  **IMPORTANT:**  You must compile your project before invoking API Extractor.  As of version 5, **api-extractor** processes the compiler's \*.d.ts outputs, not your TypeScript source files.  (This change makes it easier to support non-TypeScript projects that emit typings as output, and it also simplifies the \*.d.ts rollup stage.)
 
 
 
 
 # 2. Using a NodeJS build script
 
-If your TypeScript project is compiled using build scripts, you can also invoke **API Extractor** using its [library API](https://microsoft.github.io/web-build-tools/api/api-extractor.html).  It accepts the same configuration structure as the `api-extractor.json`.  Here's a basic example:
+If your TypeScript project is compiled using build scripts, you can also invoke API Extractor using its [library API](https://microsoft.github.io/web-build-tools/api/api-extractor.html).  It accepts the same configuration structure as the `api-extractor.json`.  Here's a basic example:
 
 ```ts
 import { Extractor, IExtractorConfig, IExtractorOptions } from '@microsoft/api-extractor';
@@ -149,7 +149,7 @@ For a real world example, take a look at [ApiExtractorTask.ts](https://github.co
 
 # 3. If you use gulp-core-build...
 
-**API Extractor** is already integrated into Microsoft's **gulp-core-build** toolchain.  To enable it, you simply add config file to your project, like this:
+API Extractor is already integrated into Microsoft's **gulp-core-build** toolchain.  To enable it, you simply add config file to your project, like this:
 
 **config/api-extractor.json**<br/>
 ```json

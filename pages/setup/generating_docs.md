@@ -5,7 +5,7 @@ navigation_source: docs_nav
 ---
 
 
-**API Extractor** produces API JSON files that can be used to generate an API reference web site.
+API Extractor produces API JSON files that can be used to generate an API reference web site.
 
 ## Basic scenario
 
