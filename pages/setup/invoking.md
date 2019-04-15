@@ -4,163 +4,199 @@ title: Invoking API Extractor
 navigation_source: docs_nav
 ---
 
-There are three easy ways to set up your project to use API Extractor.
+How do you invoke API Extractor on your project?
 
-# 1. Using the command-line
+* TOC
+{:toc}
 
-The simplest method is to run the command-line tool.  Install it like this:
 
-```
-npm install -g @microsoft/api-extractor
-```
+## Invoking via the command-line
 
-Next, create a config file `api-extractor.json` for your project. Here's a simple example `api-extractor.json` file:
+The simplest way to invoke API Extractor is via the command-line.
 
-```json
+### 1. Configure the TypeScript compiler for your project
+
+For this tutorial, suppose we have a hypothetical library project whose **package.json** file looks like this:
+
+**awesome-widgets/package.json**
+```js
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/api-extractor.schema.json",
-  "compiler" : {
-    "configType": "tsconfig",
-    "rootFolder": "."
-  },
-  "project": {
-    "entryPointSourceFile": "lib/index.d.ts"
-  }
+  "name": "awesome-widgets",
+  "version": "1.0.0",
+  "main": "./lib/index.js",
+  "typings": "./lib/index.d.ts"
 }
 ```
 
-More information about this file format:
+Here we assume the library's main entry point is **awesome-widgets/src/index.ts**, which compiles to
+produce the **index.js** and **index.d.ts** files seen above.  In your **tsconfig.json** file, you should enable
+the following settings:
 
-- [api-extractor.schema.json](https://github.com/Microsoft/web-build-tools/blob/master/apps/api-extractor/src/schemas/api-extractor.schema.json) - the JSON schema
+- `"declaration": true` This enables generation of the .d.ts files that API Extractor will analyze.
+  *By design, TypeScript source files are not directly analyzed, but instead must be first processed by your compiler.*
 
-- [IExtractorConfig.ts](https://github.com/Microsoft/web-build-tools/blob/master/apps/api-extractor/src/api/IExtractorConfig.ts) - TypeScript interfaces for the JSON schema
+- `"declarationMap": true` This enables generation of .d.ts.map files that allow API Extractor errors to be
+  reported using line numbers from your original source files; without this, the error locations will instead
+  refer to the generated .d.ts files.
 
-- [api-extractor-defaults.json](https://github.com/Microsoft/web-build-tools/blob/master/apps/api-extractor/src/schemas/api-extractor-defaults.json) - the default values
+Our example **tsconfig.json** file might look like this:
 
-Finally, compile your project and then invoke the **api-extractor** tool in your project folder, like this:
+**awesome-widgets/tsconfig.json**
+```js
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": true,
+    "sourceMap": true,
+    "declarationMap": true,
+    "types": [
+    ],
+    "lib": [
+      "es5"
+    ],
+    "outDir": "lib"
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
+}
+```
+
+### 2. Install API Extractor
+
+To install the NPM package in your global environment, use a command like this:
+
+```shell
+$ npm install -g @microsoft/api-extractor
+```
+
+Assuming your `PATH` environment variable is set up correctly, now you should be able to invoked the
+`api-extractor` tool from your shell.
+
+
+### 3. Create a template config file
+
+Next, we need to create a config file `api-extractor.json` for your project.  The following command will create
+[a template file](
+https://github.com/Microsoft/web-build-tools/blob/master/apps/api-extractor/src/schemas/api-extractor-template.json)
+that shows all settings and their default values:
 
 ```
-C:\> cd my-project
-C:\my-project> api-extractor run
+$ api-extractor init
 ```
 
-If the config file is not in your project root folder, you can specify its location using the `--config` option.  For a non-production build, you should also include the `--local` option. For example:
+We recommend to use this template for your real config file.  However, since the template is fairly verbose,
+in this tutorial we will show condensed files without the extra comments.
+[This page]({% link pages/commands/config_file.md %}) explains each setting in depth.
 
+Our convention is to put config files in the "config" subfolder, so folder tree might look like this:
+
+<b>
+awesome-widgets/package.json<br/>
+awesome-widgets/tsconfig.json<br/>
+awesome-widgets/config/api-extractor.json<br/>
+awesome-widgets/lib/index.d.js<br/>
+awesome-widgets/lib/index.js.map<br/>
+awesome-widgets/lib/index.d.ts<br/>
+awesome-widgets/lib/index.d.ts.map<br/>
+awesome-widgets/src/index.ts<br/>
+</b>
+
+If your project doesn't use the "config" subfolder convention, you can also put **api-extractor.json** in your
+project folder.  API Extractor will look for it in both places.
+
+In the next few pages, we'll look at the individual settings in more detail.  For now, we should simply make sure
+that the `mainEntryPointFilePath` matches the `typings` field in our **package.json** file above.  The template
+assigns it like this:
+
+```js
+  "mainEntryPointFilePath": "<projectFolder>/lib/index.d.ts",
 ```
-C:\> cd my-project
-C:\my-project> api-extractor run --config .\config\api-extractor.json --local
+
+...which matches .
+
+
+### 4. Running the tool
+
+Now we're ready to invoke the **api-extractor** command line.  For a local (non-production) build, you would
+use these shell commands:
+
+```shell
+$ cd awesome-widgets
+
+# First invoke the TypeScript compiler to make the .d.ts files
+$ tsc
+
+# Next, we invoke API Extractor
+$ api-extractor run --local
 ```
 
-For more information about command-line options, try: `api-extractor run -h`
+## Invoking from a build script
 
+If your project is built using a custom toolchain that is coded in TypeScript, you can alternatively invoke
+the API Extractor engine programmatically.
 
-
->  **IMPORTANT:**  You must compile your project before invoking API Extractor.  As of version 5, **api-extractor** processes the compiler's \*.d.ts outputs, not your TypeScript source files.  (This change makes it easier to support non-TypeScript projects that emit typings as output, and it also simplifies the \*.d.ts rollup stage.)
-
-
-
-
-# 2. Using a NodeJS build script
-
-If your TypeScript project is compiled using build scripts, you can also invoke API Extractor using its [library API](https://microsoft.github.io/web-build-tools/api/api-extractor.html).  It accepts the same configuration structure as the `api-extractor.json`.  Here's a basic example:
+There are a lot of options, but here's a bare bones example:
 
 ```ts
-import { Extractor, IExtractorConfig, IExtractorOptions } from '@microsoft/api-extractor';
+import * as path from 'path';
+import {
+  Extractor,
+  ExtractorConfig,
+  ExtractorResult
+} from '@microsoft/api-extractor';
 
-// This interface represents the API Extractor config file contents
-const config: IExtractorConfig = {
-  compiler: {
-    configType: 'tsconfig',
-    rootFolder: process.cwd()
-  },
-  project: {
-    entryPointSourceFile: 'lib/index.d.ts'
-  }
-};
+const apiExtractorJsonPath: string = path.join(__dirname, '../config/api-extractor.json');
 
-// This interface provides additional runtime state
-// that is NOT part of the config file
-const options: IExtractorOptions = {
-  // Indicates that API Extractor is running as part of a local build,
-  // e.g. on developer's machine. For example, if the *.api.ts output file
-  // has differences, it will be automatically overwritten for a
-  // local build, whereas this should report an error for a production build.
-  localBuild: process.argv.indexOf('--ship') < 0
-}
+// Load and parse the api-extractor.json file
+const extractorConfig: ExtractorConfig = ExtractorConfig.loadFileAndPrepare(apiExtractorJsonPath);
 
-const extractor: Extractor = new Extractor(config, options);
-extractor.analyzeProject();
-```
+// Invoke API Extractor
+const extractorResult: ExtractorResult = Extractor.invoke(extractorConfig, {
+  // Equivalent to the "--local" command-line parameter
+  localBuild: true,
 
-Unlike the command-line, the library API also enables you to provide an already initialized TypeScript compiler state at runtime, via the [IExtractorOptions interface](https://microsoft.github.io/web-build-tools/api/api-extractor.iextractoroptions.html).  This allows you to reuse the exact same configuration that your build scripts provided to the TypeScript compiler API.
+  // Equivalent to the "--verbose" command-line parameter
+  showVerboseMessages: true
+});
 
-Here's how to provide the `ts.Program` compiler state:
-
-```ts
-import * as ts from 'typescript';
-import { JsonFile } from '@microsoft/node-core-library';
-import { Extractor, IExtractorConfig, IExtractorOptions } from '@microsoft/api-extractor';
-
-const tsconfig: {} = JsonFile.load('tsconfig.json');
-
-const parsedCommandLine: ts.ParsedCommandLine = ts.parseJsonConfigFileContent(
-  tsconfig, ts.sys, process.cwd());
-
-const program: ts.Program = ts.createProgram(parsedCommandLine.fileNames,
-  parsedCommandLine.options);
-
-// This interface represents the API Extractor config file contents
-const config: IExtractorConfig = {
-  compiler: {
-    configType: 'runtime',
-    rootFolder: process.cwd()
-  },
-  project: {
-    entryPointSourceFile: 'lib/index.d.ts'
-  }
-};
-
-// This interface provides additional runtime state
-// that is NOT part of the config file
-const options: IExtractorOptions = {
-  // Indicates that API Extractor is running as part of a local build,
-  // e.g. on developer's machine. For example, if the *.api.ts output file
-  // has differences, it will be automatically overwritten for a
-  // local build, whereas this should report an error for a production build.
-  localBuild: process.argv.indexOf('--ship') < 0,
-
-  // A compiler object, since we specified configType=runtime above
-  compilerProgram: program,
-
-  // A custom logging function
-  customLogger: {
-    logVerbose: (message: string) => { /* don't log verbose messages */ }
-  }
-}
-
-const extractor: Extractor = new Extractor(config, options);
-extractor.analyzeProject();
-```
-
-For a real world example, take a look at [ApiExtractorTask.ts](https://github.com/Microsoft/web-build-tools/blob/master/core-build/gulp-core-build-typescript/src/ApiExtractorTask.ts) from **gulp-core-build**.
-
-
-
-
-# 3. If you use gulp-core-build...
-
-API Extractor is already integrated into Microsoft's **gulp-core-build** toolchain.  To enable it, you simply add config file to your project, like this:
-
-**config/api-extractor.json**<br/>
-```json
-{
-  "enabled": true,
-  "apiReviewFolder": "../common/reviews/api",
-  "apiJsonFolder": "./lib",
-  "entry": "lib/index.d.ts"
+if (extractorResult.succeeded) {
+  console.error(`API Extractor completed successfully`);
+  process.exitCode = 0;
+} else {
+  console.error(`API Extractor completed with ${extractorResult.errorCount} errors`
+    + ` and ${extractorResult.warningCount} warnings`);
+  process.exitCode = 1;
 }
 ```
 
-> **NOTE**: Although the **gulp-core-build** task's config file is also called "**api-extractor.json**", the JSON schema is completely different and considerably simpler.
+If you invoke API Extractor multiple times for a single **tsconfig.json** environment, this approach also allows
+you to reuse the same `CompilerState` object across multiple invocations.  This can be a significant performance
+optimization, since the TypeScript compiler analysis is relatively expensive.  Take a look at the
+[api-extractor-scenarios/src/runScenarios.ts](
+https://github.com/Microsoft/web-build-tools/blob/master/build-tests/api-extractor-scenarios/src/runScenarios.ts)
+test runner for a real world example of how to do this.
+
+
+## Reusing settings across projects
+
+The **api-extractor.json** file contents are completely described by the `IConfigFile` interface, which you
+can use to construct the `ExtractorConfig` object.  With this approach it's possible to avoid creating an
+**api-extractor.json** file entirely, but we generally recommend not to do that.  When developers are
+troubleshooting problems, it's very useful to have your actual configuration represented in a standard config file
+that people can inspect and tinker with.  Also, if you ever need to debug API Extractor itself,
+it's probably easer to debug the isolated `api-extractor` process than a complex toolchain, but you'll need an
+**api-extractor.json** file for that.
+
+So... if you work in a modern monorepo with many different projects, how can you ensure they have consistent
+API Extractor settings without a lot of copy+pasting of **api-extractor.json** files?  Following the
+convention of **tsconfig.json** and **tslint.json**, API Extractor supports an `extends` field that allows
+your **api-extractor.json** file to inherit its configuration from a shared template file.
+[See here]({% link pages/commands/config_file.md %}#extends) for details.
+
+
+&Now that we've got things running, let's look at how to configure the three different output types...*
 
 #### Next up: [Configuring an API report]({% link pages/setup/configure_api_report.md %})

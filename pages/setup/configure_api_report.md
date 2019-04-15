@@ -4,5 +4,29 @@ title: Configuring an API report
 navigation_source: docs_nav
 ---
 
+The API report
+
+```ts
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+
+  "mainEntryPointFilePath": "<projectFolder>/lib/index.d.ts",
+
+  "apiReport": {
+    "enabled": true,
+  },
+
+  "docModel": {
+    "enabled": true
+  },
+
+  "dtsRollup": {
+    "enabled": true
+  },
+
+  "testMode": true
+}
+```
+
 
 
