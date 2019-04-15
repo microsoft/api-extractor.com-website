@@ -71,6 +71,6 @@ export class Widget implements IWidget {
 
 ## See also
 
-- [Doc Comment Syntax: Release tags]({% link pages/tsdoc/doc_comment_syntax.md %}#release-tags)
+- [Doc comment syntax: Release tags]({% link pages/tsdoc/doc_comment_syntax.md %}#release-tags)
 - [ae-misplaced-package-tag]({% link pages/messages/ae-misplaced-package-tag.md %})
 - [mainEntryPointFilePath setting]({% link pages/commands/config_file.md %}#mainentrypointfilepath)

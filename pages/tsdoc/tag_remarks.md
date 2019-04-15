@@ -90,4 +90,4 @@ Whereas the detail page for `getFullName()` would show the summary followed by t
 
 ## See also
 
-- [Doc Comment Syntax: Comment structure]({% link pages/tsdoc/doc_comment_syntax.md %}#comment-structure)
+- [Doc comment syntax: Comment structure]({% link pages/tsdoc/doc_comment_syntax.md %}#comment-structure)

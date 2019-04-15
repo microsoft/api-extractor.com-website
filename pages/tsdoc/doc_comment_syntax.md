@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Doc Comment Syntax
+title: Doc comment syntax
 navigation_source: docs_nav
 ---
 

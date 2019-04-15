@@ -45,7 +45,7 @@ docs_nav:
       - title: Getting Help
         url: /pages/setup/help
 
-  - title: Doc Comment Syntax
+  - title: Doc comment syntax
     subitems:
       - title: Overview
         url: /pages/tsdoc/doc_comment_syntax
@@ -92,7 +92,7 @@ docs_nav:
       - title: '@virtual'
         url: /pages/tsdoc/tag_virtual
 
-  - title: Message Reference
+  - title: Message reference
     subitems:
       - title: ae-cyclic-inherit-doc
         url: /pages/messages/ae-cyclic-inherit-doc

@@ -16,6 +16,6 @@ Remove the `@preapproved` tag.
 
 ## See also
 
-- [Doc Comment Syntax: Release tags]({% link pages/tsdoc/doc_comment_syntax.md %}#release-tags)
+- [Doc comment syntax: Release tags]({% link pages/tsdoc/doc_comment_syntax.md %}#release-tags)
 - [@preapproved tag]({% link pages/tsdoc/tag_preapproved.md %})
 - [@internal tag]({% link pages/tsdoc/tag_internal.md %})

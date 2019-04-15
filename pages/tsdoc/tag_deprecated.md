@@ -31,5 +31,5 @@ export class BaseWidget {
 
 ## See also
 
-- [Doc Comment Syntax: Release tags]({% link pages/tsdoc/doc_comment_syntax.md %}#release-tags)
+- [Doc comment syntax: Release tags]({% link pages/tsdoc/doc_comment_syntax.md %}#release-tags)
 

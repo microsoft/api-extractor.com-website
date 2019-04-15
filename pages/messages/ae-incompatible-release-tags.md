@@ -102,4 +102,4 @@ Correct the release tags so that the relationships are consistent.
 
 ## See also
 
-- [Doc Comment Syntax: Release tags]({% link pages/tsdoc/doc_comment_syntax.md %}#release-tags)
+- [Doc comment syntax: Release tags]({% link pages/tsdoc/doc_comment_syntax.md %}#release-tags)
