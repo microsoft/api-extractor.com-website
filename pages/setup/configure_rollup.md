@@ -10,7 +10,9 @@ It's recommended to start there.*
 ## Simple case
 
 To enable .d.ts rollup generation, you simply need to set `dtsRollup.enabled` to true in your **api-extractor.json**
-config file.  By default, the rollup file will be written to `"<projectFolder>/dist/<unscopedPackageName>.d.ts"`,
+config file.
+
+By default, the rollup file will be written to `"<projectFolder>/dist/<unscopedPackageName>.d.ts"`,
 but you can change this using the `dtsRollup.untrimmedFilePath` setting.
 
 Recall from our earlier example that the original **package.json** file looked like this:

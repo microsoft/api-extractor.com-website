@@ -108,7 +108,7 @@ in this tutorial we will show condensed files without the extra comments.
 >
 > GitHub also highlights comments as errors by default.  To fix that, add this line to your **.gitattributes** file:
 >
-> ```json
+> ```
 > *.json  linguist-language=JSON5
 > ```
 >
@@ -132,14 +132,14 @@ If your project doesn't use the "config" subfolder convention, you can also put 
 project folder.  API Extractor will look for it in both places.
 
 In the next few pages, we'll look at the individual settings in more detail.  For now, we should simply make sure
-that the `mainEntryPointFilePath` matches the `typings` field in our **package.json** file above.  The template
+that the `mainEntryPointFilePath` matches the `"typings"` field in our **package.json** file above.  The template
 assigns it like this:
 
 ```js
   "mainEntryPointFilePath": "<projectFolder>/lib/index.d.ts",
 ```
 
-...which matches the **package.json** `typings` field above.
+...which matches the **package.json** `"typings"` field above.
 
 
 ### 4. Running the tool
@@ -217,7 +217,7 @@ it's probably easer to debug the isolated `api-extractor` process than a complex
 
 So... if you work in a modern monorepo with many different projects, how can you ensure they have consistent
 API Extractor settings without a lot of copy+pasting of **api-extractor.json** files?  Following the
-convention of **tsconfig.json** and **tslint.json**, API Extractor supports an `extends` field that allows
+convention of **tsconfig.json** and **tslint.json**, API Extractor supports an `"extends"` field that allows
 your **api-extractor.json** file to inherit its configuration from a shared template file.
 [See here]({% link pages/commands/config_file.md %}#extends) for details.
 

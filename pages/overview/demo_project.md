@@ -7,7 +7,7 @@ navigation_source: docs_nav
 *This article continues the tutorial from the "[What is API Extractor?]({% link pages/overview/intro.md %})" page.  It's recommended to start there.*
 
 For this tutorial, we'll consider a hypothetical TypeScript library project.  The declarations are taken from
-a real-world NPM package **@microsoft/sp-core-library**.  Its main entry point is *src/index.ts*, which contains
+a real-world NPM package **@microsoft/sp-core-library**.  Its main entry point is **src/index.ts**, which contains
 export statements like this:
 
 **src/index.ts**<br/>

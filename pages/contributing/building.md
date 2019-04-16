@@ -7,6 +7,38 @@ navigation_source: docs_nav
 API Extractor is developed in the [web-build-tools](https://github.com/Microsoft/web-build-tools/)
 monorepo on GitHub.
 
-For instructions on building API Extractor and guidelines for submitting PRs, please read the
+For general instructions on building API Extractor and guidelines for submitting PRs, please read the
 [Contributing to this repo](https://github.com/Microsoft/web-build-tools/wiki/Contributing-to-this-repo)
 wiki article.
+
+The specific projects that you will be interested in are:
+
+- [api-extractor](https://github.com/Microsoft/web-build-tools/tree/master/apps/api-extractor)
+- [api-documenter](https://github.com/Microsoft/web-build-tools/tree/master/apps/api-documenter)
+- [api-extractor-model](https://github.com/Microsoft/web-build-tools/tree/master/apps/api-extractor-model)
+
+After you've built the above 3 projects, there are a number of test projects in the [build-tests](
+https://github.com/Microsoft/web-build-tools/tree/master/build-tests) folder that will be symlinked to
+your built executables.  These "test" projects don't use a test runner.  Instead, they are modeled realistic
+NodeJS library projects whose interesting outputs are tracked by Git.  Thus, when the output changes, you need
+to remember to commit the updated output files to Git.  (Eventually we'll add a build task that validates this
+similar to a Jest snapshot.)
+
+These test projects impact the overall monorepo build time, so most of the newer tests have been moved into
+a monolithic project called [api-extractor-scenarios](
+https://github.com/Microsoft/web-build-tools/tree/master/build-tests/api-extractor-scenarios).
+It contains a number of small entry points that get compiled via a single invocation of the TypeScript compiler.
+Then the [runScenarios.ts](
+https://github.com/Microsoft/web-build-tools/blob/master/build-tests/api-extractor-scenarios/src/runScenarios.ts)
+driver invokes API Extractor on each output, using the `CompilerState` object to reuse the semantic analysis.
+This is an order of magnitude faster than building each project individually.
+
+Some of the **api-extractor-scenarios** tests need to import declarations from an external package.
+These projects are used for that purpose (and no other purpose):
+
+- [api-extractor-lib1-test](
+https://github.com/Microsoft/web-build-tools/tree/master/build-tests/api-extractor-lib1-test)
+- [api-extractor-lib2-test](
+https://github.com/Microsoft/web-build-tools/tree/master/build-tests/api-extractor-lib2-test)
+- [api-extractor-lib3-test](
+https://github.com/Microsoft/web-build-tools/tree/master/build-tests/api-extractor-lib3-test)
