@@ -1,60 +1,101 @@
 ---
 layout: page
-title: Generating Docs
+title: Generating API docs
 navigation_source: docs_nav
 ---
 
+*This article continues the tutorial from the "[Invoking API Extractor]({% link pages/setup/invoking.md %})" page.
+It's recommended to start there.*
 
-**API Extractor** produces API JSON files that can be used to generate an API reference web site.
 
-## Basic scenario
+## Generating JSON files
 
-Suppose you simply want to publish API documentation on your GitHub web site, as a collection of [markdown](https://en.wikipedia.org/wiki/Markdown) files (*.md). The steps are pretty straightforward:
+API Extractor writes your extracted API signature and doc comments into an intermediary JSON file called
+the "doc model" file.  To enable this output, you simply need to set `docModel.enabled` to true in
+your **api-extractor.json** config file.
 
-1. Install the [api-documenter tool](https://www.npmjs.com/package/@microsoft/api-documenter) from NPM, by running this command:
+The doc model file is written to `"<projectFolder>/temp/<unscopedPackageName>.api.json"` by default,
+but you can customize this using the `docModel.apiJsonFilePath` setting.
 
+
+## Using api-documenter to generate Markdown
+
+API Extractor includes a companion tool called **api-documenter** that you can use to generate a basic API reference
+website.  The Markdown output is fairly basic, since the `MarkdownDocumenter.ts` source file was designed to be concise
+and understandable, while still functionally complete.  That way it can serve as a starting point for people who want
+to implement their own adapter to process API Extractor's doc model using a custom pipeline (discussed later).
+Even so, Markdown output can be a realistic solution if your needs are not too fancy, and it is very easy to use.
+
+As input, **api-documenter** accepts a folder containing doc model files, one for each package that you want
+to incorporate.  This allows a collection of related projects to be built separately (perhaps in separate Git repos
+using different toolchains).  The documentation pipeline collects these JSON files, and then uses them to generate
+a single website, complete with cross-package hyperlinks and an integrated navigation tree.
+
+Here's a typical usage scenario:
+
+1. (Separately) Invoke API Extractor for each project that you want to document.  This will produce one or more
+   .api.json files.
+
+2. Copy your .api.json files into an input folder, for example:
+
+   - **~/my-docs/input/**      &nbsp;&nbsp;  (.api.json inputs go here)
+   - **~/my-docs/markdown/**   &nbsp;&nbsp;  (.md output files will go here)
+
+3. Install the [api-documenter tool](https://www.npmjs.com/package/@microsoft/api-documenter) in your global
+environment, using a shell command like this:
+
+    ```shell
+    $ npm install -g @microsoft/api-documenter
     ```
-    npm install -g @microsoft/api-documenter
+
+    Assuming your `PATH` environment variable is set up correctly, now you should now be able to invoke
+    `api-documenter` from your shell.
+
+4. Run the **api-documenter** tool like this:
+
+    ```shell
+    $ cd ~/my-docs/
+    $ api-documenter markdown
     ```
+   You can customize these folders using parameters such as `--input-folder` and `--output-folder`.
+   See [the command line reference]({% link pages/commands/api-documenter_markdown.md %}) for details.
 
-2. Execute API Extractor on your packages to produce a collection of API JSON files (as described [here]({% link pages/setup/get_started.md %})
+What do we do with these generated Markdown files?  There are various options:
 
-3. Copy your *.api.json files into an input folder, for example:
+- **GitHub**:  If you're using GitHub, you can simply commit them to your master branch in
+  a "docs" folder, and they will be rendered using GitHub's markdown previewer.  Here's an example of how it looks:
+  [node-core-library.md](https://github.com/Microsoft/web-build-tools/blob/gh-pages/api/node-core-library.md)
 
-   - `C:\MyDocs\input\`      <-- *.api.json inputs go here
-   - `C:\MyDocs\markdown\`   <-- *.md output files will go here
+- **GitHub Pages**:  If you use [GitHub pages](https://guides.github.com/features/pages/) to host a web site for
+  your project, your repo will probably have a "gh-pages" branch.  You can add the Markdown files there,
+  as seen here:
 
-4. Invoke the **api-documenter** tool like this:
+  **Branch**: [https://github.com/Microsoft/web-build-tools/tree/gh-pages/api](
+  https://github.com/Microsoft/web-build-tools/tree/gh-pages/api)
 
-    ```
-    cd C:\MyDocs
+  **Web site**: [https://microsoft.github.io/web-build-tools/api/](https://microsoft.github.io/web-build-tools/api/)
 
-    api-documenter markdown
-    ```
-
-   You can customize the folders using parameters such as `--input-folder` and `--output-folder`.  See `api-documenter --help` for help.
-
-5. Make sure GitHub pages is enabled for your repo, then add the markdown files to your *gh-pages* branch.  For example:
-
-   **Branch**: [https://github.com/Microsoft/web-build-tools/tree/gh-pages/api](https://github.com/Microsoft/web-build-tools/tree/gh-pages/api)
-
-   **Web site**: [https://microsoft.github.io/web-build-tools/api/](https://microsoft.github.io/web-build-tools/api/)
+- **Docusaurus**: People have reported that these Markdown files can also be rendered using
+  [Docusaurus](https://docusaurus.io/), which produces a React-based web site using Markdown inputs.
 
 
-The overall pipeline looks like this:
+## Using api-documenter with DocFX
 
-> **api-extractor** --> *example.api.json file* --> **api-documenter** --> *\*.md files* --> **GitHub** --> *web site*
+If Markdown output is the "go-kart" of documentation generation, then
+[DocFX](https://dotnet.github.io/docfx/) is the "space shuttle".  It's a fairly complex but professional
+system with nearly every feature imaginable, since it was created to power
+[docs.microsoft.com](https://docs.microsoft.com).  As far as API Extractor's involvement, the workflow is the same
+as above, except that the shell command is `api-documenter yaml` instead of `api-documenter markdown`.
+Setting up DocFX can be a little challenging (unless you work at Microsoft, in which case it's super easy! :-) ).
+
+The sites that DocFX produces are very full-featured.  Here's a couple API references that were generated
+using **api-documenter** with DocFX:
+
+- [SharePoint Framework Reference](https://docs.microsoft.com/en-us/javascript/api/sp-core-library)
+- [Office Add-ins platform](https://docs.microsoft.com/en-us/javascript/api/excel_release/excel.application)
 
 
-## Custom scenarios
+These are nice options.  But suppose you have custom needs, and you're not afraid to write some code to get
+what you want...
 
-For more advanced scenarios, you can customize the **api-documenter** tool itself.  For example, Microsoft's enterprise documentation pipeline uses the [DocFX](https://github.com/dotnet/docfx) engine, which accepts API definitions using a YAML format.  The pipeline looks like this:
-
-> **api-extractor** --> *example.api.json file* --> **api-documenter** --> *\*.yml files* --> **DocFX engine** --> *web site*
-
-If your company uses a proprietary pipeline like this, you can use the **api-documenter** as a code sample.  The code is in this folder:
-
-   [web-build-tools/apps/api-documenter](https://github.com/Microsoft/web-build-tools/tree/master/apps/api-documenter)
-
-We have found that the requirements for advanced scenarios can vary wildly (e.g. HTML output, or YAML files, or special navigation menu layouts, etc).  Rather than trying to invent an elaborate system of templates and config files to anticipate every potential need, we have instead designed the **api-documenter** source code to be as simple and readable as possible.  It is published under an MIT license.  Feel free to fork it and hack it up however you like.  If your changes are general improvements, please open a pull request and contribute them back to the mainline project.
-
+#### Next up: [Integrating a custom doc pipeline]({% link pages/setup/custom_docs.md %})
