@@ -4,7 +4,7 @@ title: Invoking API Extractor
 navigation_source: docs_nav
 ---
 
-How do you invoke API Extractor on your project?
+Sounds great!  So... how exactly do we enable API Extractor for a new project?
 
 * TOC
 {:toc}
@@ -32,10 +32,10 @@ Here we assume the library's main entry point is **awesome-widgets/src/index.ts*
 produce the **index.js** and **index.d.ts** files seen above.  In your **tsconfig.json** file, you should enable
 the following settings:
 
-- `"declaration": true` This enables generation of the .d.ts files that API Extractor will analyze.
+- `"declaration": true` - This enables generation of the .d.ts files that API Extractor will analyze.
   *By design, TypeScript source files are not directly analyzed, but instead must be first processed by your compiler.*
 
-- `"declarationMap": true` This enables generation of .d.ts.map files that allow API Extractor errors to be
+- `"declarationMap": true` - This enables generation of .d.ts.map files that allow API Extractor errors to be
   reported using line numbers from your original source files; without this, the error locations will instead
   refer to the generated .d.ts files.
 
@@ -72,7 +72,7 @@ To install the NPM package in your global environment, use a command like this:
 $ npm install -g @microsoft/api-extractor
 ```
 
-Assuming your `PATH` environment variable is set up correctly, now you should be able to invoked the
+Assuming your `PATH` environment variable is set up correctly, now you should now be able to invoke the
 `api-extractor` tool from your shell.
 
 
@@ -90,6 +90,30 @@ $ api-extractor init
 We recommend to use this template for your real config file.  However, since the template is fairly verbose,
 in this tutorial we will show condensed files without the extra comments.
 [This page]({% link pages/commands/config_file.md %}) explains each setting in depth.
+
+> **Comments in JSON files**
+>
+> Strictly speaking, JSON was originally intended as a machine interchange format, and thus does not formally support
+> code comments.  Recently JSON has gained popularity as a human-edited config file format, which obviously requires
+> comments.  As such, most serious JSON libraries can handle comments without any trouble. (A notable exception
+> is `JSON.parse()`; don't use that -- it cannot validate schemas and has poor error reporting.)
+>
+> VS Code highlights JSON comments as errors by default, but it provides an optional "[JSON with comments](
+> https://code.visualstudio.com/docs/languages/identifiers)" mode.  To enable this, add this line to
+> VS COde's **settings.json**:
+>
+> ```json
+> "files.associations": { "*.json": "jsonc" }
+> ```
+>
+> GitHub also highlights comments as errors by default.  To fix that, add this line to your **.gitattributes** file:
+>
+> ```json
+> *.json  linguist-language=JSON5
+> ```
+>
+> *For a discussion of some other possibilities, see
+> [issue #1088](https://github.com/Microsoft/web-build-tools/issues/1088).*
 
 Our convention is to put config files in the "config" subfolder, so folder tree might look like this:
 
@@ -115,7 +139,7 @@ assigns it like this:
   "mainEntryPointFilePath": "<projectFolder>/lib/index.d.ts",
 ```
 
-...which matches .
+...which matches the **package.json** `typings` field above.
 
 
 ### 4. Running the tool
@@ -130,8 +154,9 @@ $ cd awesome-widgets
 $ tsc
 
 # Next, we invoke API Extractor
-$ api-extractor run --local
+$ api-extractor run --local --verbose
 ```
+
 
 ## Invoking from a build script
 
@@ -197,6 +222,6 @@ your **api-extractor.json** file to inherit its configuration from a shared temp
 [See here]({% link pages/commands/config_file.md %}#extends) for details.
 
 
-&Now that we've got things running, let's look at how to configure the three different output types...*
+*Now that we've got things running, let's look at how to configure the three different output types...*
 
 #### Next up: [Configuring an API report]({% link pages/setup/configure_api_report.md %})

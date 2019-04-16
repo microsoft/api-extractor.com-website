@@ -22,7 +22,7 @@ Optional arguments:
                         local build, e.g. on a developer's machine. This
                         disables certain validation that would normally be
                         performed for a ship/production build. For example,
-                        the *.api.md review file is automatically copied in a
+                        the *.api.md report file is automatically copied in a
                         local build.
   -v, --verbose         Show additional diagnostic messages in the output.
   --typescript-compiler-folder PATH
