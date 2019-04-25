@@ -70,13 +70,18 @@ What do we do with these generated Markdown files?  There are various options:
   your project, your repo will probably have a "gh-pages" branch.  You can add the Markdown files there,
   as seen here:
 
-  **Branch**: [https://github.com/Microsoft/web-build-tools/tree/gh-pages/api](
+  Example branch: [https://github.com/Microsoft/web-build-tools/tree/gh-pages/api](
   https://github.com/Microsoft/web-build-tools/tree/gh-pages/api)
 
-  **Web site**: [https://microsoft.github.io/web-build-tools/api/](https://microsoft.github.io/web-build-tools/api/)
+  Example website: [https://microsoft.github.io/web-build-tools/api/](https://microsoft.github.io/web-build-tools/api/)
 
-- **Docusaurus**: People have reported that these Markdown files can also be rendered using
-  [Docusaurus](https://docusaurus.io/), which produces a React-based web site using Markdown inputs.
+- **Docusaurus**: These Markdown files can also be rendered using [Docusaurus](https://docusaurus.io/), which
+  produces a React-based web site using Markdown inputs.
+
+  Example branch: [https://github.com/faastjs/faast.js/tree/master/docs/api](
+    https://github.com/faastjs/faast.js/tree/master/docs/api)
+
+  Example website: [https://faastjs.org/docs/api/faastjs](https://faastjs.org/docs/api/faastjs)
 
 
 ## Using api-documenter with DocFX
