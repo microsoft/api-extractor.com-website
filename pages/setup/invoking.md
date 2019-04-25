@@ -109,7 +109,7 @@ in this tutorial we will show condensed files without the extra comments.
 > GitHub also highlights comments as errors by default.  To fix that, add this line to your **.gitattributes** file:
 >
 > ```
-> *.json  linguist-language=JSON5
+> *.json  linguist-language=JSON-with-Comments
 > ```
 >
 > *For a discussion of some other possibilities, see
