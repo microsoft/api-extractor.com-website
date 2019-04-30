@@ -1,6 +1,6 @@
 ---
 layout: page
-title: A sample projuect
+title: A sample project
 navigation_source: docs_nav
 ---
 
