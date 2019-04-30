@@ -54,7 +54,7 @@ setting).  This isn't always the case.  Some projects rely on path-based imports
 import { Button } from 'awesome-widgets/lib/Button';
 ```
 
-This import statement is fishing around in the **awsome-widgets** folder tree to find a specific file.
+This import statement is fishing around in the **awesome-widgets** folder tree to find a specific file.
 In general this is incompatible with a rollup, since any exported declarations will now have two copies:
 one in the **lib** folder, and one in the rollup file.  The TypeScript compiler generally does not consider
 duplicated declarations to be interchangeable, and it can lead to some very confusing error messages.
