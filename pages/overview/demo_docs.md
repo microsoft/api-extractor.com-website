@@ -70,7 +70,7 @@ corresponding to the `ILogHandler.error` member, which should give an idea of th
                 "endIndex": 11
               },
               "releaseTag": "Beta",
-              "overloadIndex": 0,
+              "overloadIndex": 1,
               "parameters": [
                 {
                   "parameterName": "source",

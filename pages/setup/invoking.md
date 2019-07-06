@@ -204,6 +204,15 @@ optimization, since the TypeScript compiler analysis is relatively expensive.  T
 https://github.com/Microsoft/web-build-tools/blob/master/build-tests/api-extractor-scenarios/src/runScenarios.ts)
 test runner for a real world example of how to do this.
 
+> **Compiler version incompatibilities**
+>
+> When API Extractor invokes the compiler engine to analyze your project, it uses its own TypeScript version.  It cannot
+> use your toolchain's version because the compiler API may be incompatible.  This can sometimes cause API Extractor
+> to report compiler errors due to differences in the built-in runtime libraries between versions.  It's recommended
+> to specify the `IExtractorInvokeOptions.typescriptCompilerFolder` option, which tells API Extractor to use the runtime
+> libraries that your project was built with.  (If the error occurs because your project is using a newer compiler
+> release than API Extractor was built with, please open a GitHub issue requesting to upgrade API Extractor's
+> compiler version.)
 
 ## Reusing settings across projects
 
