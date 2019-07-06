@@ -89,6 +89,8 @@ docs_nav:
         url: /pages/tsdoc/tag_returns
       - title: '@sealed'
         url: /pages/tsdoc/tag_sealed
+      - title: '@typeParam'
+        url: /pages/tsdoc/tag_typeparam
       - title: '@virtual'
         url: /pages/tsdoc/tag_virtual
 

@@ -59,4 +59,5 @@ export class Statistics {
 
 ## See also
 
+- [@typeParam tag]({% link pages/tsdoc/tag_typeparam.md %})
 - [@returns tag]({% link pages/tsdoc/tag_returns.md %})
