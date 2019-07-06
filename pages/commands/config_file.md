@@ -376,6 +376,22 @@ If the path is an empty string, then this file will not be written.
 The path is resolved relative to the folder of the config file that contains the setting; to change this,
 prepend a folder token such as `<projectFolder>`.
 
+### dtsRollup.omitTrimmingComments
+
+Example:
+```js
+  "dtsRollup": {
+    . . .
+    "omitTrimmingComments": true,
+    . . .
+  }
+```
+
+**Default value:** `false`
+
+When a declaration is trimmed, by default it will be replaced by a code comment such as
+`Excluded from this release type: exampleMember`.  Set `omitTrimmingComments` to true to remove the
+declaration completely.
 
 
 ## TSDoc Metadata Section
