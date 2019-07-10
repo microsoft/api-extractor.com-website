@@ -20,7 +20,7 @@ next block tag.  This content is called the "**value text**".  The value text ca
 - Arbitrary rich text potentially spanning multiple lines,
   for example: <br/> `@defaultValue An instance of the {@link Widget} object`
 
-Thus, documentation templates should not assume that the value text will be consist entirely of code.
+Thus, documentation templates should not assume that the value text will consist entirely of code.
 
 **Usage example:**
 
