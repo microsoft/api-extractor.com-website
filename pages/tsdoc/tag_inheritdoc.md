@@ -36,7 +36,7 @@ export interface IWidget {
   /**
    * Draws the widget on the display surface.
    * @param x - the X position of the widget
-   * @param x - the Y position of the widget
+   * @param y - the Y position of the widget
    */
   public draw(x: number, y: number): void;
 }
