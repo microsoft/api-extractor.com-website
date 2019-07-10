@@ -11,7 +11,7 @@ https://github.com/Microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization
 
 The `@virtual` modifier has similar semantics to the `virtual` keyword in C#.  It should only be applied
 to a member of a class.  It indicates that the member may be overridden (i.e. redefined) by a corresponding member
-of a child class.  The `@virtual` keyword should not be applied to `abstract` members, because the `abstract`
+of a child class.  The `@virtual` modifier should not be applied to `abstract` members, because the `abstract`
 keyword already implies that the method is virtual.
 
 The `@virtual` modifier will be displayed in the generated documentation.
