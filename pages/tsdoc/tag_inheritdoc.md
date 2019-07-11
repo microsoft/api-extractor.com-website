@@ -70,7 +70,7 @@ The `@inheritDoc` tag does not copy the entire comment body.  Only the following
 - summary section
 - `@remarks` block
 - `@params` blocks
-- `@typeParm` blocks
+- `@typeParam` blocks
 - `@returns` block
 
 Other tags such as `@defaultValue` or `@example` are not copied, and need to be explicitly included after
