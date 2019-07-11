@@ -7,7 +7,7 @@ navigation_source: docs_nav
 <p>&nbsp;</p>
 
 ```
-usage: api-extractor run [-h] [-c FILE] [-l] [-v]
+usage: api-extractor run [-h] [-c FILE] [-l] [-v] [--diagnostics]
                          [--typescript-compiler-folder PATH]
 
 
@@ -24,7 +24,10 @@ Optional arguments:
                         performed for a ship/production build. For example,
                         the *.api.md report file is automatically copied in a
                         local build.
-  -v, --verbose         Show additional diagnostic messages in the output.
+  -v, --verbose         Show additional informational messages in the output.
+  --diagnostics         Show diagnostic messages used for troubleshooting
+                        problems with API Extractor. This flag also enables
+                        the "--verbose" flag.
   --typescript-compiler-folder PATH
                         By default API Extractor uses its own TypeScript
                         compiler version to analyze your project. This can
@@ -32,5 +35,4 @@ Optional arguments:
                         between different TS versions. Use
                         "--typescript-compiler-folder" to specify the folder
                         path for your compiler version.
-
 ```
