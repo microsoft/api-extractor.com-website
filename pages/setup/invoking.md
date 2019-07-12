@@ -209,10 +209,10 @@ test runner for a real world example of how to do this.
 > When API Extractor invokes the compiler engine to analyze your project, it uses its own TypeScript version.  It cannot
 > use your toolchain's version because the compiler API may be incompatible.  This can sometimes cause API Extractor
 > to report compiler errors due to differences in the built-in runtime libraries between versions.  It's recommended
-> to specify the `IExtractorInvokeOptions.typescriptCompilerFolder` option, which tells API Extractor to use the runtime
-> libraries that your project was built with.  (If the error occurs because your project is using a newer compiler
-> release than API Extractor was built with, please open a GitHub issue requesting to upgrade API Extractor's
-> compiler version.)
+> to specify the `IExtractorInvokeOptions.typescriptCompilerFolder` option (`--typescript-compiler-folder` CLI option),
+> which tells API Extractor to use the runtime libraries that your project was built with.  (If the error occurs because
+> your project is using a newer compiler release than API Extractor was built with, please open a GitHub issue requesting
+> to upgrade API Extractor's compiler version.)
 
 ## Reusing settings across projects
 
