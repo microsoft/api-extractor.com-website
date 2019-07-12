@@ -62,7 +62,7 @@ export interface IWidget {
  * @public
  */
 export class Widget implements IWidget {
-  /** {@inheritDoc IWidget} */
+  /** {@inheritDoc IWidget.render} */
   public render(): void {
     . . .
   }
