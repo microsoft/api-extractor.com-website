@@ -9,7 +9,7 @@ navigation_source: docs_nav
 **TSDoc standardization:** [core](
 https://github.com/Microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
 
-The `@returns` tag is used to document the return type of a function or method parameter.  Being a block tag,
+The `@returns` tag is used to document the return value of a function or method parameter.  Being a block tag,
 `@returns` introduces a TSDoc section that contains all comment text up until the next block tag.
 
 > NOTE: [JSDoc's version](http://usejsdoc.org/tags-returns.html) of the `@returns` tag optionally allows type
