@@ -97,7 +97,7 @@ The sites that DocFX produces are very full-featured.  Here's a couple API refer
 using **api-documenter** with DocFX:
 
 - [SharePoint Framework Reference](https://docs.microsoft.com/en-us/javascript/api/sp-core-library)
-- [Office Add-ins platform](https://docs.microsoft.com/en-us/javascript/api/excel_release/excel.application)
+- [Office Add-ins platform](https://docs.microsoft.com/en-us/javascript/api/excel?view=excel-js-preview)
 
 
 These are nice options.  But suppose you have custom needs, and you're not afraid to write some code to get
