@@ -7,7 +7,7 @@ navigation_source: docs_nav
 **Tag type:** block tag
 
 **TSDoc standardization:** [extended](
-https://github.com/Microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
+https://github.com/microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
 
 The main documentation for an API item is separated into a brief "summary" section, optionally followed by
 a more detailed "remarks" section.  On a documentation web site, index pages (e.g. showing members of a class)

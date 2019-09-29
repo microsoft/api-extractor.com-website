@@ -80,7 +80,7 @@ Assuming your `PATH` environment variable is set up correctly, now you should no
 
 Next, we need to create a config file `api-extractor.json` for your project.  The following command will create
 [a template file](
-https://github.com/Microsoft/web-build-tools/blob/master/apps/api-extractor/src/schemas/api-extractor-template.json)
+https://github.com/microsoft/rushstack/blob/master/apps/api-extractor/src/schemas/api-extractor-template.json)
 that shows all settings and their default values:
 
 ```
@@ -113,7 +113,7 @@ in this tutorial we will show condensed files without the extra comments.
 > ```
 >
 > *For a discussion of some other possibilities, see
-> [issue #1088](https://github.com/Microsoft/web-build-tools/issues/1088).*
+> [issue #1088](https://github.com/microsoft/rushstack/issues/1088).*
 
 Our convention is to put config files in the "config" subfolder, so folder tree might look like this:
 
@@ -221,7 +221,7 @@ If you invoke API Extractor multiple times for a single **tsconfig.json** enviro
 you to reuse the same `CompilerState` object across multiple invocations.  This can be a significant performance
 optimization, since the TypeScript compiler analysis is relatively expensive.  Take a look at the
 [api-extractor-scenarios/src/runScenarios.ts](
-https://github.com/Microsoft/web-build-tools/blob/master/build-tests/api-extractor-scenarios/src/runScenarios.ts)
+https://github.com/microsoft/rushstack/blob/master/build-tests/api-extractor-scenarios/src/runScenarios.ts)
 test runner for a real world example of how to do this.
 
 ## Reusing settings across projects

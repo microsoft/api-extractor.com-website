@@ -10,9 +10,9 @@ It could be part of a merged declaration or an overloaded function.
 
 The TSDoc syntax provides a special "**declaration reference**" notation for unambiguously identifying declarations
 in all these situations.  (This aspect of TSDoc is still evolving; it is tracked by
-[RFC #9](https://github.com/Microsoft/tsdoc/issues/9). The current spec is outlined in
+[RFC #9](https://github.com/microsoft/tsdoc/issues/9). The current spec is outlined in
 [code-snippets/DeclarationReferences.ts](
-https://github.com/Microsoft/tsdoc/blob/master/spec/code-snippets/DeclarationReferences.ts).)
+https://github.com/microsoft/tsdoc/blob/master/spec/code-snippets/DeclarationReferences.ts).)
 
 **Contents**
 * TOC
@@ -133,6 +133,6 @@ support some advanced features that are described in the spec:
 
 These features may be implementation in the future.  If you'd like to contribute, take a look at the code in
 [AstReferenceResolver.ts](
-https://github.com/Microsoft/web-build-tools/blob/master/apps/api-extractor/src/analyzer/AstReferenceResolver.ts)
+https://github.com/microsoft/rushstack/blob/master/apps/api-extractor/src/analyzer/AstReferenceResolver.ts)
 and [ModelReferenceResolver.ts](
-https://github.com/Microsoft/web-build-tools/blob/master/apps/api-extractor-model/src/model/ModelReferenceResolver.ts).
+https://github.com/microsoft/rushstack/blob/master/apps/api-extractor-model/src/model/ModelReferenceResolver.ts).

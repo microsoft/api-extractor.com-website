@@ -7,7 +7,7 @@ navigation_source: docs_nav
 **Tag type:** block tag
 
 **TSDoc standardization:** [core](
-https://github.com/Microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
+https://github.com/microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
 
 **Syntax:**
 

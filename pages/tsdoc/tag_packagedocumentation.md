@@ -7,7 +7,7 @@ navigation_source: docs_nav
 **Tag type:** modifier
 
 **TSDoc standardization:** [core](
-https://github.com/Microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
+https://github.com/microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
 
 This tag identifies the doc comment that describes an entire NPM package (as opposed to an individual declaration
 that is exported by the package).  API Documenter will display the `@packageDocumentation` content on the page

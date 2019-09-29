@@ -33,7 +33,7 @@ In the example above, the `Size` symbol has an interface declaration that is mar
 declaration that is marked as `@beta`, so the `ae-different-release-tags` error is reported.
 
 > It would be possible for API Extractor to allow different release tags for certain types of declarations,
-> and this could be very useful.  GitHub [issue #972](https://github.com/Microsoft/web-build-tools/issues/972)
+> and this could be very useful.  GitHub [issue #972](https://github.com/microsoft/rushstack/issues/972)
 > proposes this enhancement and discusses some of the challenges involved.
 
 ## How to fix

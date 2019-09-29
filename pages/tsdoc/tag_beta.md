@@ -7,7 +7,7 @@ navigation_source: docs_nav
 **Tag type:** modifier
 
 **TSDoc standardization:** [discretionary](
-https://github.com/Microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
+https://github.com/microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
 
 The `@beta` modifier is one of the four **release tags**.  It indicates that an API item has been released
 as a preview or for experimental purposes.  Third parties are encouraged to try it and provide feedback.  However,

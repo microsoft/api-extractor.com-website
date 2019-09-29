@@ -7,7 +7,7 @@ navigation_source: docs_nav
 **Tag type:** modifier
 
 **TSDoc standardization:** [extended](
-https://github.com/Microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
+https://github.com/microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
 
 When applied to a class or interface property, this indicates that the property
 returns an event object that event handlers can be attached to.  The event-handling
@@ -34,4 +34,4 @@ export class Button {
 
 ## See also
 
-- [TSDoc RFC #30](https://github.com/Microsoft/tsdoc/issues/30)
+- [TSDoc RFC #30](https://github.com/microsoft/tsdoc/issues/30)

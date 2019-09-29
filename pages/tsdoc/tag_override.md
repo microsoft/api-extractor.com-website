@@ -7,7 +7,7 @@ navigation_source: docs_nav
 **Tag type:** modifier
 
 **TSDoc standardization:** [extended](
-https://github.com/Microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
+https://github.com/microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
 
 The `@override` modifier has similar semantics to the `override` keyword in C#.  It should only be applied
 to a member of a class.  The `@override` modifier indicates that the member is overriding (i.e. redefining)

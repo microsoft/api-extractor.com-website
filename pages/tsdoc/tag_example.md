@@ -7,7 +7,7 @@ navigation_source: docs_nav
 **Tag type:** block tag
 
 **TSDoc standardization:** [extended](
-https://github.com/Microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
+https://github.com/microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
 
 Indicates a documentation section that should be presented as an example
 illustrating how to use the API.  It may include a code sample.
@@ -91,4 +91,4 @@ API Documenter will number the example sections automatically.  The output might
 
 ## See also
 
-- [TSDoc RFC #20](https://github.com/Microsoft/tsdoc/issues/20)
+- [TSDoc RFC #20](https://github.com/microsoft/tsdoc/issues/20)

@@ -7,7 +7,7 @@ navigation_source: docs_nav
 **Tag type:** block tag
 
 **TSDoc standardization:** [extended](
-https://github.com/Microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
+https://github.com/microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
 
 This tag is used to document the default value for a field or property, if a value is not assigned explicitly.
 This tag should only be used with fields or properties that are members of a class or interface.
@@ -57,4 +57,4 @@ export interface IWarningOptions {
 
 ## See also
 
-- [TSDoc RFC #27](https://github.com/Microsoft/tsdoc/issues/27)
+- [TSDoc RFC #27](https://github.com/microsoft/tsdoc/issues/27)

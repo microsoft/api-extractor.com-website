@@ -7,7 +7,7 @@ navigation_source: docs_nav
 **Tag type:** modifier
 
 **TSDoc standardization:** [extended](
-https://github.com/Microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
+https://github.com/microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
 
 The `@sealed` modifier has similar semantics to the `sealed` keyword in C# or `final` keyword in Java.
 It should only be applied to a class or a member of a class.

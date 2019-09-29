@@ -6,7 +6,7 @@ navigation_source: docs_nav
 
 API Extractor parses your TypeScript code comments to obtain documentation and additional type information.
 It expects your code comments to use TSDoc format.  We won't provide a full description of the grammar here;
-instead, please refer to the [TSDoc project](https://github.com/Microsoft/tsdoc).)  If you've used
+instead, please refer to the [TSDoc project](https://github.com/microsoft/tsdoc).)  If you've used
 JSDoc for JavaScript source code, TSDoc will be very similar, but be aware that there are some syntax differences.
 
 The TSDoc language can be extended by defining custom tags.  API Extractor's particular dialect of TSDoc is

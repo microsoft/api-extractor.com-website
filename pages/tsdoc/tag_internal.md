@@ -7,7 +7,7 @@ navigation_source: docs_nav
 **Tag type:** modifier
 
 **TSDoc standardization:** [discretionary](
-https://github.com/Microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
+https://github.com/microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
 
 The `@internal` modifier is one of the four **release tags**.  It indicates that an API item is meant only for usage
 by other NPM packages from the same maintainer.  Third parties should never use "internal" APIs.  To emphasize this,

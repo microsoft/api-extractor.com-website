@@ -7,7 +7,7 @@ navigation_source: docs_nav
 **Tag type:** modifier
 
 **TSDoc standardization:** [extended](
-https://github.com/Microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
+https://github.com/microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
 
 The `@virtual` modifier has similar semantics to the `virtual` keyword in C#.  It should only be applied
 to a member of a class.  It indicates that the member may be overridden (i.e. redefined) by a corresponding member

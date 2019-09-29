@@ -7,7 +7,7 @@ navigation_source: docs_nav
 **Tag type:** block tag
 
 **TSDoc standardization:** [core](
-https://github.com/Microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
+https://github.com/microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
 
 The `@privateRemarks` tag designates additional documentation content that is not intended for a public audience.
 Being a block tag, `@privateRemarks` introduces a TSDoc section that contains all comment text up until the

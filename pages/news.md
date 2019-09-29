@@ -6,7 +6,7 @@ title: What's New
 ## Change log
 
 To find out what's new in the latest version of API Extractor,
-see the [CHANGELOG.md](https://github.com/Microsoft/web-build-tools/blob/master/apps/api-extractor/CHANGELOG.md).
+see the [CHANGELOG.md](https://github.com/microsoft/rushstack/blob/master/apps/api-extractor/CHANGELOG.md).
 
 
 ## API Extractor 7 is out! 🎉
