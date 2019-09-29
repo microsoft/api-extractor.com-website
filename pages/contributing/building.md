@@ -4,7 +4,7 @@ title:  Building the code
 navigation_source: docs_nav
 ---
 
-API Extractor is developed in the [web-build-tools](https://github.com/microsoft/rushstack/)
+API Extractor is developed in the [rushstack](https://github.com/microsoft/rushstack/)
 monorepo on GitHub.
 
 For general instructions on building API Extractor and guidelines for submitting PRs, please read the
