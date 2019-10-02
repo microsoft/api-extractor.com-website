@@ -10,5 +10,5 @@ API Extractor, there are various community options for help:
 - **Found a bug?** You can [open a GitHub issue](https://github.com/microsoft/rushstack/issues)
   in the **rushstack** monorepo where API Extractor is developed
 
-- **Gitter**: Chat with API Extractor developers in
-  the [web-build-tools Gitter community](https://gitter.im/web-build-tools/web-build-tools)
+- **Gitter**: Chat with API Extractor developers in the Rush Stack
+  [Gitter chat room](https://gitter.im/rushstack/rushstack)
