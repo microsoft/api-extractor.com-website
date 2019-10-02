@@ -3,18 +3,23 @@ layout: page
 title: What's New
 ---
 
-## Change log
+To find out what's changed in the latest release, please see the package changelogs:
 
-To find out what's new in the latest version of API Extractor,
-see the [CHANGELOG.md](https://github.com/microsoft/rushstack/blob/master/apps/api-extractor/CHANGELOG.md).
+- [@microsoft/api-extractor changelog](https://github.com/microsoft/rushstack/blob/master/apps/api-extractor/CHANGELOG.md)
+- [@microsoft/api-documenter changelog](https://github.com/microsoft/rushstack/blob/master/apps/api-documenter/CHANGELOG.md)
+- [@microsoft/api-extractor-model changelog](https://github.com/microsoft/rushstack/blob/master/apps/api-extractor-model/CHANGELOG.md).
 
+API Extractor is maintained by the Rush Stack developer community.  For roadmaps and updates from the team,
+please visit the [Rush Stack News](https://rushstack.io/pages/news/) page.  There's also a
+[@rushstack](https://twitter.com/rushstack) Twitter feed.
 
-## API Extractor 7 is out! 🎉
+## Important Updates
+
+### API Extractor 7 is out! 🎉
 
 After nearly 6 months of "beta" releases, we're excited to announce that API Extractor 7
 is finally ready for general usage!  Since the beta releases used the 7.0.x version numbers,
 we're using 7.1.0 for the first stable release.
-
 
 ### Big changes in Version 7
 
@@ -45,7 +50,6 @@ In addition to this, API Extractor brings a bunch of other cool enhancements:
   **@microsoft/api-extractor-model** for loading, saving, and querying it
 
 - Support for TypeScript 3.4 in all its glory!
-
 
 ### Upgrading from API Extractor 6
 
