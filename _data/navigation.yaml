@@ -108,6 +108,8 @@ docs_nav:
         url: /pages/messages/ae-incompatible-release-tags
       - title: ae-internal-missing-underscore
         url: /pages/messages/ae-internal-missing-underscore
+      - title: ae-internal-mixed-release-tag
+        url: /pages/messages/ae-internal-mixed-release-tag
       - title: ae-misplaced-package-tag
         url: /pages/messages/ae-misplaced-package-tag
       - title: ae-missing-release-tag

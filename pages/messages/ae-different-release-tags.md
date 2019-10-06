@@ -32,8 +32,27 @@ function Size(width: number, height: number): Size {
 In the example above, the `Size` symbol has an interface declaration that is marked as `@public`, but a function
 declaration that is marked as `@beta`, so the `ae-different-release-tags` error is reported.
 
-> It would be possible for API Extractor to allow different release tags for certain types of declarations,
-> and this could be very useful.  GitHub [issue #972](https://github.com/microsoft/rushstack/issues/972)
+Note that mixed release tags are allowed for overloads of a function or method. For example:
+```ts
+/**
+ * Combines two values, by adding the numbers.
+ * @public
+ */
+export function combine(x: number, y: number): number;
+
+/**
+ * Combines two values, by appending the strings.
+ * @beta
+ */
+export function combine(x: string, y: string): string;
+
+export function combine(x: number | string, y: number | string): number | string {
+  return x + y;
+}
+```
+
+> It would be possible for API Extractor to allow different release tags for other types of declarations.
+> GitHub [issue #972](https://github.com/microsoft/rushstack/issues/972)
 > proposes this enhancement and discusses some of the challenges involved.
 
 ## How to fix
