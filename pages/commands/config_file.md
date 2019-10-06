@@ -63,7 +63,6 @@ The default value for `projectFolder` is the token `<lookup>`, which means the f
 parent folders, starting from the folder containing api-extractor.json, and stopping at the first folder that contains
 a **tsconfig.json** file.  If a **tsconfig.json** file cannot be found in this way, then an error will be reported.
 
-
 ### mainEntryPointFilePath
 
 **(REQUIRED)**
@@ -83,6 +82,21 @@ The file extension must be ".d.ts" and not ".ts".
 The path is resolved relative to the folder of the config file that contains the setting; to change this,
 prepend a folder token such as `<projectFolder>`.
 
+### bundledPackages
+
+Example:
+```js
+  "bundledPackages": [ "library2" ],
+```
+
+A list of NPM package names whose exports should be treated as part of this package.
+
+For example, suppose that API extractor is run on the project `library1`, and Webpack is used to generate a distributed
+bundle `library1.js` that embeds another NPM package `library2`.  Some types from `library2` may become part
+of the exported API for `library1`, but by default API Extractor would generate a .d.ts rollup that explicitly
+imports `library2`.  To avoid this, we can specify `"bundledPackages": [ "library2" ]` as shown above.
+This would direct API Extractor to embed those types directly in the .d.ts rollup `library1.d.ts`, as if they had
+been local files for `library1`.
 
 
 ## Compiler Section

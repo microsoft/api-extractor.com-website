@@ -174,3 +174,4 @@ these rules, but it will soon.
 - [ae-extra-release-tag]({% link pages/messages/ae-extra-release-tag.md %})
 - [ae-incompatible-release-tags]({% link pages/messages/ae-incompatible-release-tags.md %})
 - [ae-internal-missing-underscore]({% link pages/messages/ae-internal-missing-underscore.md %})
+- [ae-internal-mixed-release-tag]({% link pages/messages/ae-internal-mixed-release-tag.md %})
