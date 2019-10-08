@@ -100,7 +100,7 @@ in this tutorial we will show condensed files without the extra comments.
 >
 > VS Code highlights JSON comments as errors by default, but it provides an optional "[JSON with comments](
 > https://code.visualstudio.com/docs/languages/identifiers)" mode.  To enable this, add this line to
-> VS COde's **settings.json**:
+> VS Code's **settings.json**:
 >
 > ```json
 > "files.associations": { "*.json": "jsonc" }
