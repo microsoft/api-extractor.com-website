@@ -8,7 +8,7 @@ navigation_source: docs_nav
 
 ## Remarks
 
-API Extractor models a pair of property getter/setters as a single API item.  The getter is the main declaration,
+API Extractor models a property getter/setter pair as a single API item.  The getter is the main declaration,
 and the setter is treated as an "ancillary" signature.  Only the getter can have a doc comment.  If a doc comment
 is found on the setter, then API Extractor reports the `ae-setter-with-docs` error.
 
@@ -42,7 +42,7 @@ export class Book {
 
 ## How to fix
 
-Remove the doc comment from the setter.  Describe both options in the getter doc comment:
+Remove the doc comment from the setter.  Describe both options in the getter's doc comment:
 
 ```ts
 /**

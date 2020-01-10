@@ -8,17 +8,18 @@ navigation_source: docs_nav
 
 ## Remarks
 
-An TypeScript property is conventionally used to indicate an API that behaves similar to reading/writing a variable.
-For example, style guides often recommend against usages such as:
+TypeScript properties are conventionally used to indicate an API that behaves similar to reading or writing a variable.
+For example, style guides often recommend:
 
-- property getters that perform expensive/complex operations
-- property getters that cause observable side-effects (e.g. advancing the stream pointer each time a property is read)
-- property getters that throw exceptions
+- property getters shouldn't perform expensive/complex operations
+- property getters shouldn't cause observable side-effects (e.g. reading the property moves a stream pointer forwards)
+- property getters should avoid throwing exceptions
 
-From this perspective, it would be very strange to have a property getter with no setter.  After assigning a value
-to a variable, intuitively a developer will expect to be able to read it back.
+In the same way, it would be strange to declare a property getter without a setter.  After assigning a value
+to a variable, intuitively a developer would expect to be able to read the assigned value.
 
-Example:
+
+Consider this example:
 
 ```ts
 /**
@@ -42,12 +43,13 @@ book.title = "The Hobbit";
 console.log("The title: " + book.title); // prints "The title: undefined"
 ```
 
-This pattern is very likely a mistake, so API Extractor reports the `ae-missing-getter` error.
+The above behavior is counterintuitive.  The missing setter is likely a mistake in the API design.
+API Extractor reports the `ae-missing-getter` error.
 
 ## How to fix
 
-The simplest solution is to implement the property getter.  Note that the documentation goes on the getter;
-the setter cannot have a doc comment:
+The simplest solution is to implement the missing property getter.  Note that the getter's documentation describes
+both operations; a property setter cannot have a doc comment:
 
 ```ts
 /**
@@ -74,8 +76,8 @@ book.title = "The Hobbit";
 console.log("Title: " + book.title); // prints "Title: The Hobbit"
 ```
 
-Alternatively, if your API really needs to be a unidirectional assignment, then it's better designed as a method
-instead of a property:
+Alternatively, if your API really needs to be a unidirectional operation, you should design it as a method instead
+of a property:
 
 ```ts
 /**
