@@ -112,12 +112,16 @@ docs_nav:
         url: /pages/messages/ae-internal-mixed-release-tag
       - title: ae-misplaced-package-tag
         url: /pages/messages/ae-misplaced-package-tag
+      - title: ae-missing-getter
+        url: /pages/messages/ae-missing-getter
       - title: ae-missing-release-tag
         url: /pages/messages/ae-missing-release-tag
       - title: ae-preapproved-bad-release-tag
         url: /pages/messages/ae-preapproved-bad-release-tag
       - title: ae-preapproved-unsupported-type
         url: /pages/messages/ae-preapproved-unsupported-type
+      - title: ae-setter-with-docs
+        url: /pages/messages/ae-setter-with-docs
       - title: ae-unresolved-inheritdoc-base
         url: /pages/messages/ae-unresolved-inheritdoc-base
       - title: ae-unresolved-inheritdoc-reference
