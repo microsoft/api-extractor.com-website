@@ -28,7 +28,7 @@ If the *DISPLAY_TEXT* is omitted, then the declaration name or URL address will 
  * The base class for all {@link https://en.wikipedia.org/wiki/Widget | widgets}.
  *
  * @remarks
- * Implements the {@link @microsoft/widget-lib:IWidget} interface.  To draw the widget,
+ * Implements the {@link @microsoft/widget-lib#IWidget} interface.  To draw the widget,
  * call the {@link BaseWidget.draw | draw() function}.
  *
  * @public
