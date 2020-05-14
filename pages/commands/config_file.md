@@ -355,7 +355,7 @@ Example:
   }
 ```
 
-**Default value:** `"<projectFolder>/dist/<unscopedPackageName>-beta.d.ts"`
+**Default value:** `""`
 
 **Supported tokens:** `<projectFolder>`, `<packageName>`, `<unscopedPackageName>`
 
@@ -378,7 +378,7 @@ Example:
   }
 ```
 
-**Default value:** `"<projectFolder>/dist/<unscopedPackageName>-public.d.ts"`
+**Default value:** `""`
 
 **Supported tokens:** `<projectFolder>`, `<packageName>`, `<unscopedPackageName>`
 
