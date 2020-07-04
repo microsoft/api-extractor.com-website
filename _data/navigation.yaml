@@ -6,6 +6,9 @@ top_nav:
   - title: News
     url: /pages/news
 
+  - title: API
+    url: /pages/developer/api
+
   - title: GitHub
     url: /pages/contributing/building
 
@@ -141,6 +144,11 @@ docs_nav:
         url: /pages/commands/api-documenter_markdown
       - title: api-documenter yaml
         url: /pages/commands/api-documenter_yaml
+
+  - title: Developer Scenarios
+    subitems:
+      - title: API packages
+        url: /pages/developer/api
 
   - title: Contributing
     subitems:
