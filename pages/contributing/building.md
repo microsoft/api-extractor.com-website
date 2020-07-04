@@ -7,6 +7,8 @@ navigation_source: docs_nav
 API Extractor is developed in the [rushstack](https://github.com/microsoft/rushstack/)
 monorepo on GitHub.
 
+Contribute to the documentation website in the [api-extractor.com-website](https://github.com/microsoft/api-extractor.com-website) repo on GitHub.
+
 For general instructions on building API Extractor and guidelines for submitting PRs, please read the
 [Contributing](https://rushstack.io/pages/contributing/get_started/) documentation for the Rush Stack
 monorepo.
