@@ -4,7 +4,7 @@ title: API packages
 navigation_source: docs_nav
 ---
 
-These NPM packages export developer APIs that are documented in integrated API reference for all Rush Stack projects:
+These NPM packages export developer APIs that are documented in the integrated API reference for all [Rush Stack](https://rushstack.io/) projects:
 
 - [@microsoft/api-extractor](https://rushstack.io/pages/api/api-extractor/)
 
