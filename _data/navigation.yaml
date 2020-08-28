@@ -6,6 +6,9 @@ top_nav:
   - title: News
     url: /pages/news
 
+  - title: API
+    url: /pages/developer/api
+
   - title: GitHub
     url: /pages/contributing/building
 
@@ -27,7 +30,7 @@ docs_nav:
         url: /pages/overview/demo_api_report
       - title: The .d.ts rollup
         url: /pages/overview/demo_rollup
-      - title: API Documentation
+      - title: API documentation
         url: /pages/overview/demo_docs
 
   - title: Setting up your project
@@ -42,7 +45,7 @@ docs_nav:
         url: /pages/setup/generating_docs
       - title: Integrating a custom doc pipeline
         url: /pages/setup/custom_docs
-      - title: Getting Help
+      - title: Getting help
         url: /pages/setup/help
 
   - title: Doc comment syntax
@@ -141,6 +144,11 @@ docs_nav:
         url: /pages/commands/api-documenter_markdown
       - title: api-documenter yaml
         url: /pages/commands/api-documenter_yaml
+
+  - title: Developer scenarios
+    subitems:
+      - title: API packages
+        url: /pages/developer/api
 
   - title: Contributing
     subitems:

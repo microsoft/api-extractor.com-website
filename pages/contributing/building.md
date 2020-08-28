@@ -4,18 +4,22 @@ title:  Building the code
 navigation_source: docs_nav
 ---
 
-API Extractor is developed in the [rushstack](https://github.com/microsoft/rushstack/)
-monorepo on GitHub.
+API Extractor is developed in the monorepo for the [Rush Stack](https://rushstack.io/) family of projects:
+
+&nbsp;&nbsp;&nbsp;&nbsp; [https://github.com/microsoft/rushstack](https://github.com/microsoft/rushstack)
+Related GitHub repos:
+- The API Extractor website and documentation: [https://github.com/microsoft/api-extractor.com-website](https://github.com/microsoft/api-extractor.com-website)
+- The TSDoc parser for doc comments: [https://github.com/Microsoft/tsdoc](https://github.com/Microsoft/tsdoc)
 
 For general instructions on building API Extractor and guidelines for submitting PRs, please read the
 [Contributing](https://rushstack.io/pages/contributing/get_started/) documentation for the Rush Stack
 monorepo.
 
-The specific projects that you will be interested in are:
+The specific project folders that you will be interested in are:
 
-- [api-extractor](https://github.com/microsoft/rushstack/tree/master/apps/api-extractor)
-- [api-documenter](https://github.com/microsoft/rushstack/tree/master/apps/api-documenter)
-- [api-extractor-model](https://github.com/microsoft/rushstack/tree/master/apps/api-extractor-model)
+- [apps/api-extractor](https://github.com/microsoft/rushstack/tree/master/apps/api-extractor)
+- [apps/api-documenter](https://github.com/microsoft/rushstack/tree/master/apps/api-documenter)
+- [apps/api-extractor-model](https://github.com/microsoft/rushstack/tree/master/apps/api-extractor-model)
 
 After you've built the above 3 projects, there are a number of test projects in the [build-tests](
 https://github.com/microsoft/rushstack/tree/master/build-tests) folder that will be symlinked to
