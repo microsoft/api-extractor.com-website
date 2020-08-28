@@ -99,8 +99,8 @@ Here's how it gets processed:
 - **Analyzer stage:** API Extractor starts from your API entry point and follows each export to find its
   "followed symbol".  Then we make an `AstSymbol` and two `AstDeclaration`'s for `add()`.  The analyzer also walks up
   and down the AST tree to fill out the context.  For example, if the `AstSymbol` is a `class`, then we'll create
-  a child `AstSymbol` for each of its members.  And if the class belongs to a `namespace`, then it becomes the parent
-  `AstSymbol`.
+  a child `AstSymbol` for each of its members.  And if the class belongs to a `namespace`, then a parent `AstSymbol`
+  is added representing the namespace.
 
   While following `import` statements, if we reach an external NPM package, the analysis stops there and
   produces an `AstImport` instead of a regular `AstSymbol`.  This is because API Extractor understands
@@ -149,7 +149,7 @@ Here's how it gets processed:
   doc comments.  But it happens to be a full DOM-like structure that can represent rich text.  Since the TSDoc comment
   for `add()` is already this kind of rich text, API Documenter cleverly reuses this representation to model an
   entire web page.  This intermediate representation enables the markdown emitter to be decoupled from the documentation
-  engine, and make it easy later to emit other output formats such as HTML or PDF.
+  engine, and makes it easy in the future to output other formats such as HTML or React.
 
 To summarize, for the humble `add()` function this pipeline produced a number of different representations:
 
