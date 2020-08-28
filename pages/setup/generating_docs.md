@@ -96,8 +96,11 @@ Setting up DocFX can be a little challenging (unless you work at Microsoft, in w
 The sites that DocFX produces are very full-featured.  Here's a couple API references that were generated
 using **api-documenter** with DocFX:
 
+<!--
 - [SharePoint Framework Reference](https://docs.microsoft.com/en-us/javascript/api/sp-core-library)
-- [Office Add-ins platform](https://docs.microsoft.com/en-us/javascript/api/excel?view=excel-js-preview)
+-->
+- [Add-ins platform](https://docs.microsoft.com/en-us/javascript/api/excel?view=excel-js-preview) for Microsoft Office
+- [API reference](https://esfx.js.org/esfx/index.html) for the [@esfix](https://esfx.js.org/) project
 
 
 These are nice options.  But suppose you have custom needs, and you're not afraid to write some code to get

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: API Documentation
+title: API documentation
 navigation_source: docs_nav
 ---
 
