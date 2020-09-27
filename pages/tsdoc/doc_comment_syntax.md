@@ -47,7 +47,7 @@ export function f2(): void { }
 
 ## Comment structure
 
-The overall anatomy of a TSDoc comment has these components:
+The overall anatomy of an AEDoc comment has these components:
 
 - **The summary section:** The documentation content up until the first block tag is called the "summary".
   The summary section should be brief. On a documentation web site, it will be shown on a page that lists summaries
