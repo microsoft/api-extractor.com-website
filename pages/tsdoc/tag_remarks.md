@@ -6,7 +6,7 @@ navigation_source: docs_nav
 
 **Tag type:** block tag
 
-**TSDoc standardization:** [extended](
+**TSDoc standardization:** [core](
 https://github.com/microsoft/tsdoc/blob/master/tsdoc/src/details/Standardization.ts)
 
 The main documentation for an API item is separated into a brief "summary" section, optionally followed by
