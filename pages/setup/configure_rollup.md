@@ -129,7 +129,7 @@ To publish an internal release, we simply run `npm publish` in the project folde
 To publish a beta release, we would first update the `"typings"` field in **package.json** to point to **awesome-widgets-beta.d.ts**.  (Alternatively, we could overwrite the **dist/awesome-widgets.d.ts** with
 that file.)  Then we run `npm publish`.
 
-To publish a beta release, we would first update the `"typings"` field in **package.json** to point to **awesome-widgets-public.d.ts**.  (Alternatively, we could overwrite the **dist/awesome-widgets.d.ts** with
+To publish a public release, we would first update the `"typings"` field in **package.json** to point to **awesome-widgets-public.d.ts**.  (Alternatively, we could overwrite the **dist/awesome-widgets.d.ts** with
 that file.)  Then we run `npm publish`.
 
 Many other approaches are possible as well.  Your build scripts can use these files however you like.
