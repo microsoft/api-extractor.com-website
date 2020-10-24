@@ -69,7 +69,7 @@ For an example of rendering HTML using React, you might also want to look at
 which renders the "HTML" tab for the [TSDoc Playground](https://microsoft.github.io/tsdoc/).
 
 If you get stuck or have questions, the API Extractor developers are usually reachable
-in the [Gitter chat room](https://gitter.im/rushstack/rushstack) for the **rushstack** monorepo.
+in the [Zulip chat room](https://rushstack.zulipchat.com/) for the **rushstack** monorepo.
 
 And if you implement an adapter that allows API Extractor to work with a cool open source documentation engine...
 let us know!  We'll definitely mention it in these docs!  :-)
