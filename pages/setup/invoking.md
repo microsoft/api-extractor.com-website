@@ -208,7 +208,7 @@ const extractorResult: ExtractorResult = Extractor.invoke(extractorConfig, {
 });
 
 if (extractorResult.succeeded) {
-  console.error(`API Extractor completed successfully`);
+  console.log(`API Extractor completed successfully`);
   process.exitCode = 0;
 } else {
   console.error(`API Extractor completed with ${extractorResult.errorCount} errors`
