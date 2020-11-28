@@ -7,6 +7,7 @@ navigation_source: docs_nav
 API Extractor is developed in the monorepo for the [Rush Stack](https://rushstack.io/) family of projects:
 
 &nbsp;&nbsp;&nbsp;&nbsp; [https://github.com/microsoft/rushstack](https://github.com/microsoft/rushstack)
+
 Related GitHub repos:
 - The API Extractor website and documentation: [https://github.com/microsoft/api-extractor.com-website](https://github.com/microsoft/api-extractor.com-website)
 - The TSDoc parser for doc comments: [https://github.com/Microsoft/tsdoc](https://github.com/Microsoft/tsdoc)
