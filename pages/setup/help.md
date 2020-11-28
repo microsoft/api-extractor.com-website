@@ -11,4 +11,4 @@ support for API Extractor, there are various community options for help:
   in the **rushstack** monorepo where API Extractor is developed
 
 - **Zulip**: Chat with API Extractor developers in the Rush Stack
-  [Zulip chat room](https://rushstack.zulipchat.com/)
+  [Zulip chat room](https://rushstack.zulipchat.com/#narrow/stream/262521-api-extractor)
