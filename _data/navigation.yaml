@@ -147,6 +147,8 @@ docs_nav:
     subitems:
       - title: api-extractor.json
         url: /pages/configs/api-extractor_json
+      - title: tsdoc.json
+        url: /pages/configs/tsdoc_json
 
   - title: Developer scenarios
     subitems:
