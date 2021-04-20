@@ -41,7 +41,7 @@ the entry point index.d.ts
 
 Console warnings cause the **api-extractor** tool to return a nonzero exit code, which will cause
 a production build to fail.  However, using the
-[addToApiReportFile]({% link pages/commands/config_file.md %}#messagessectionruleaddtoapireportfile)
+[addToApiReportFile]({% link pages/configs/api-extractor_json.md %}#messagessectionruleaddtoapireportfile)
 setting, you can configure the warning to be added to the API report file instead.  You would add a section
 like this to your **api-extractor.json** file:
 

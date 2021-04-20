@@ -78,5 +78,5 @@ validation by adding a section like this to your **api-extractor.json** file:
 
 ## See also
 
-- [api-extractor.json config file]({% link pages/commands/config_file.md %}#message-reporting-section)
+- [api-extractor.json config file]({% link pages/configs/api-extractor_json.md %}#message-reporting-section)
 - [Doc comment syntax: Release tags]({% link pages/tsdoc/doc_comment_syntax.md %}#release-tags)

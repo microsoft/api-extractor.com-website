@@ -78,4 +78,4 @@ for tracking purposes.  It will not produce a console warning and thus will NOT 
 
 ## See also
 
-- [mainEntryPointFilePath setting]({% link pages/commands/config_file.md %}#mainentrypointfilepath)
+- [mainEntryPointFilePath setting]({% link pages/configs/api-extractor_json.md %}#mainentrypointfilepath)

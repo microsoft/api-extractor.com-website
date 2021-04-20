@@ -134,8 +134,6 @@ docs_nav:
 
   - title: Command line
     subitems:
-      - title: api-extractor.json
-        url: /pages/commands/config_file
       - title: api-extractor init
         url: /pages/commands/api-extractor_init
       - title: api-extractor run
@@ -144,6 +142,11 @@ docs_nav:
         url: /pages/commands/api-documenter_markdown
       - title: api-documenter yaml
         url: /pages/commands/api-documenter_yaml
+
+  - title: Config files
+    subitems:
+      - title: api-extractor.json
+        url: /pages/configs/api-extractor_json
 
   - title: Developer scenarios
     subitems:
