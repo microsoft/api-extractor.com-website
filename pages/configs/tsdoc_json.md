@@ -5,7 +5,7 @@ navigation_source: docs_nav
 ---
 
 [TSDoc](https://tsdoc.org/) is a standard syntax for TypeScript doc comments.  It can be extended with custom
-tag definitions.  API Extractor's custom definitions (referred to as "AEDoc") can be found in the file
+tag definitions.  API Extractor's custom tags are referred to as "AEDoc" tags.  They are defined in the file
 [extends/tsdoc-base.json](https://github.com/microsoft/rushstack/blob/master/apps/api-extractor/extends/tsdoc-base.json).
 
 If your code comments are processed by other TSDoc-compatible tools, you can add a **tsdoc.json** config file
@@ -21,7 +21,7 @@ Add a file like this to your project:
 {
   "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
 
-  // Inherit the TSDOc configuration from API Extractor
+  // Inherit the TSDoc configuration for API Extractor
   "extends": [ "@microsoft/api-extractor/extends/tsdoc-base.json" ]
 }
 ```
@@ -29,20 +29,23 @@ Add a file like this to your project:
 
 ## Defining your own TSDoc tags
 
-You can also define your own tags in **tsdoc.json** and the ESLint plugin will validate them.
-API Extractor will serialize these definitions into the .api.json output files (in the `"tsdocConfig"` field)
+You can also define your own tags in **tsdoc.json**, and the ESLint plugin will validate them.
+API Extractor serializes these definitions into the .api.json output files (in the `"tsdocConfig"` field)
 so that they are accessible to tools that use the
-[@microsoft/api-extractor-model](https://www.npmjs.com/package/@microsoft/api-extractor-model) library.
+[@microsoft/api-extractor-model](https://www.npmjs.com/package/@microsoft/api-extractor-model) library
+(via the [ApiDocumentedItem.tsdocComment](https://rushstack.io/pages/api/api-extractor-model.apidocumenteditem/) API).
 
-Here's a basic example of a custom tag definition:
+A custom tag definition might look like this:
 
 **&lt;your-project-folder&gt;/tsdoc.json**
 ```js
 {
   "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
 
-  // Inherit the TSDOc configuration from API Extractor
+  // Include the definitions that are required for API Extractor
   "extends": ["@microsoft/api-extractor/extends/tsdoc-base.json"],
+
+  // noStandardTags: false,
 
   "tagDefinitions": [
     // Define a custom tag and specify how it should be parsed
@@ -54,12 +57,23 @@ Here's a basic example of a custom tag definition:
   ],
 
   "supportForTags": {
-    // Indicate that the custom tag is supported by your tooling.  (With this, warnings may
-    // be reported saying that the tag is known but not supported.)
+    // Indicate that the custom tag is supported by your tooling.  (Without this, warnings may
+    // be reported saying that the tag is unsupported.)
     "@myCustomTag": true
   }
 }
 ```
 
-For more details about the **tsdoc.json** file, refer to the
-[@microsoft/tsdoc-config](https://tsdoc.org/pages/packages/tsdoc-config/) documentation.
+The resulting TSDoc configuration will include the AEDoc definitions that were merged via `"extends"`,
+plus the standard tags that are predefined by the TSDoc parser.  To see your project's final TSDoc configuration,
+invoke API Extractor with the `--diagnostics` command-line option:
+
+```
+$ cd your-project-folder
+
+# Look for the "DIAGNOSTIC: TSDoc configuration" in the console output
+$ api-extractor run --local --diagnostics
+```
+
+> For more details about the **tsdoc.json** file, refer to the
+> [@microsoft/tsdoc-config](https://tsdoc.org/pages/packages/tsdoc-config/) documentation.
