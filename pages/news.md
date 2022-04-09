@@ -7,7 +7,7 @@ To find out what's changed in the latest release, please see the package changel
 
 - [@microsoft/api-extractor changelog](https://github.com/microsoft/rushstack/blob/master/apps/api-extractor/CHANGELOG.md)
 - [@microsoft/api-documenter changelog](https://github.com/microsoft/rushstack/blob/master/apps/api-documenter/CHANGELOG.md)
-- [@microsoft/api-extractor-model changelog](https://github.com/microsoft/rushstack/blob/master/apps/api-extractor-model/CHANGELOG.md).
+- [@microsoft/api-extractor-model changelog](https://github.com/microsoft/rushstack/blob/master/libraries/api-extractor-model/CHANGELOG.md).
 
 API Extractor is maintained by the Rush Stack developer community.  For roadmaps and updates from the team,
 please visit the [Rush Stack News](https://rushstack.io/pages/news/) page.

@@ -20,7 +20,7 @@ The specific project folders that you will be interested in are:
 
 - [apps/api-extractor](https://github.com/microsoft/rushstack/tree/master/apps/api-extractor)
 - [apps/api-documenter](https://github.com/microsoft/rushstack/tree/master/apps/api-documenter)
-- [apps/api-extractor-model](https://github.com/microsoft/rushstack/tree/master/apps/api-extractor-model)
+- [libraries/api-extractor-model](https://github.com/microsoft/rushstack/tree/master/libraries/api-extractor-model)
 
 After you've built the above 3 projects, there are a number of test projects in the [build-tests](
 https://github.com/microsoft/rushstack/tree/master/build-tests) folder that will be symlinked to

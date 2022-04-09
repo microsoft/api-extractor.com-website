@@ -57,7 +57,7 @@ This is possible because of the [@microsoft/api-extractor-model](
 https://www.npmjs.com/package/@microsoft/api-extractor-model) library.  It does the hard work of loading
 the folder of .api.json files, parsing their contents, and providing a nice hierarchy that you can query.
 The library also implements the [ApiModel.resolveDeclarationReference()](
-https://github.com/microsoft/rushstack/blob/master/apps/api-extractor-model/src/model/ApiModel.ts)
+https://github.com/microsoft/rushstack/blob/master/libraries/api-extractor-model/src/model/ApiModel.ts)
 function that you can use to resolve the declaration references such as `@link` hyperlinks.
 
 The README.md for **@microsoft/api-extractor-model** explains the basic hierarchy and how to traverse it,
