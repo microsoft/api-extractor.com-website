@@ -14,21 +14,21 @@ https://github.com/microsoft/api-extractor.com-website/) repo.)
 API Extractor's code is separated into source code folders that reflect subsystems that can be arranged
 into a rough overall operational flow.
 
-- [src/cli](https://github.com/microsoft/rushstack/tree/master/apps/api-extractor/src/cli) -
+- [src/cli](https://github.com/microsoft/rushstack/tree/main/apps/api-extractor/src/cli) -
   the command-line interface (CLI) that gets things started
 
-- [src/api](https://github.com/microsoft/rushstack/tree/master/apps/api-extractor/src/api) -
+- [src/api](https://github.com/microsoft/rushstack/tree/main/apps/api-extractor/src/api) -
   this folder contains the public API such as `Extractor` and `ExtractorConfig`.  The CLI invokes these
   APIs the same way that an external consumer would; it doesn't use any special internals.  The TypeScript
   compiler gets configured in this stage, producing the `ts.Program` object that will be used below.
 
 - [src/collector](
-  https://github.com/microsoft/rushstack/tree/master/apps/api-extractor/src/collector) -
+  https://github.com/microsoft/rushstack/tree/main/apps/api-extractor/src/collector) -
   The `Collector` acts as a central orchestrator that runs many of the stages below.  Conceptually it is "collecting"
   all the API information in a central place, primarily `CollectorEntity` objects.  This folder also has the
   `MessageRouter` class that routes errors and warnings based on the `"messages"` table from **api-extractor.json**.
 
-- [src/analyzer](https://github.com/microsoft/rushstack/tree/master/apps/api-extractor/src/analyzer) -
+- [src/analyzer](https://github.com/microsoft/rushstack/tree/main/apps/api-extractor/src/analyzer) -
   the core analyzer, which traverses the TypeScript compiler's abstract syntax tree (AST) and produces
   the higher-level representations used by API Extractor.  There are 4 major pieces of tech here:
 
@@ -37,7 +37,7 @@ into a rough overall operational flow.
     (e.g. classes, enums, interfaces, etc.) that will become "API items" in the documentation website and its
     `api-extractor-model` representation.  This condensed tree omits all the intermediary `ts.Declaration`
     nodes (e.g. `extends` clauses, `:` tokens, and so forth).  The
-    [AstSymbol.ts](https://github.com/microsoft/rushstack/blob/master/apps/api-extractor/src/analyzer/AstSymbol.ts)
+    [AstSymbol.ts](https://github.com/microsoft/rushstack/blob/main/apps/api-extractor/src/analyzer/AstSymbol.ts)
     code comments provide some more detail about this very important data structure.
 
   - The `ExportAnalyzer`, which traverses chains of TypeScript `import` statements, eliminating the
@@ -56,17 +56,17 @@ into a rough overall operational flow.
   - The `AstReferenceResolver`:  Given a TSDoc declaration reference, this walks the the `AstSymbolTable` to
     find whatever it refers to.
 
-- [src/enhancers](https://github.com/microsoft/rushstack/tree/master/apps/api-extractor/src/enhancers) -
+- [src/enhancers](https://github.com/microsoft/rushstack/tree/main/apps/api-extractor/src/enhancers) -
   After the `Collector` has collected all the API objects and their metadata, we run a series of additional
   postprocessing stages called `enhancers`.  The current ones are `ValidationEnhancer` (which applies some
   API validation rules) and `DocCommentEnhancer` which tunes up the TSDoc comments, for example expanding
   the `@inheritDoc` references.
 
-- [src/generators](https://github.com/microsoft/rushstack/tree/master/apps/api-extractor/src/generators) -
+- [src/generators](https://github.com/microsoft/rushstack/tree/main/apps/api-extractor/src/generators) -
   This folder implements API Extractor's famous 3 output types:  `ApiReportGenerator`, `DtsRollupGenerator`,
   and `ApiModelGenerator`.
 
-- [src/schemas](https://github.com/microsoft/rushstack/tree/master/apps/api-extractor/src/schemas) -
+- [src/schemas](https://github.com/microsoft/rushstack/tree/main/apps/api-extractor/src/schemas) -
   This folder contains the `api-extractor init` template file, the JSON schema for **api-extractor.json**,
   and **api-extractor-defaults.json** which represents the default values for **api-extractor.json** settings.
 

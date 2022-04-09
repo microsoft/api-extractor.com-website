@@ -6,7 +6,7 @@ navigation_source: docs_nav
 
 [TSDoc](https://tsdoc.org/) is a standard syntax for TypeScript doc comments.  It can be extended with custom
 tag definitions.  API Extractor's custom tags are referred to as "AEDoc" tags.  They are defined in the file
-[extends/tsdoc-base.json](https://github.com/microsoft/rushstack/blob/master/apps/api-extractor/extends/tsdoc-base.json).
+[extends/tsdoc-base.json](https://github.com/microsoft/rushstack/blob/main/apps/api-extractor/extends/tsdoc-base.json).
 
 If your code comments are processed by other TSDoc-compatible tools, you can add a **tsdoc.json** config file
 to your project. This enables different tools to agree about how comments should be parsed.  If you are using

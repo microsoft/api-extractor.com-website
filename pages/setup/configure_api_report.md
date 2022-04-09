@@ -15,14 +15,14 @@ The API report file is relatively simple to configure.  The two most interesting
 For a single project, it's fine to keep the report in the default location `"<projectFolder>/etc/"`.
 Whereas if you work in a monorepo with many projects, you may prefer to have all the API report files
 written to a central location such as [common/reviews/api](
-https://github.com/microsoft/rushstack/tree/master/common/reviews/api) used by the **rushstack**
+https://github.com/microsoft/rushstack/tree/main/common/reviews/api) used by the **rushstack**
 repo where API Extractor is developed.
 
 The report file should be tracked by Git, so that changes to an API signature will appear as diffs when a
 pull request (PR) is created.
 
 The **rushstack** repo uses a [.github/CODEOWNERS](
-https://github.com/microsoft/rushstack/blob/master/.github/CODEOWNERS) file to require approvals from
+https://github.com/microsoft/rushstack/blob/main/.github/CODEOWNERS) file to require approvals from
 a specific list of people when an API is changed.  Depending on your process, this approval can be more or
 less formalized.
 
@@ -73,7 +73,7 @@ export class Widget implements IWidget {
 ```
 
 If you take a look at [api-extractor-defaults.json](
-https://github.com/microsoft/rushstack/blob/master/apps/api-extractor/src/schemas/api-extractor-defaults.json)
+https://github.com/microsoft/rushstack/blob/main/apps/api-extractor/src/schemas/api-extractor-defaults.json)
 you will see that API Extractor already does this by default for many message types.  In general it defaults to true
 for any message where the problem is not serious, but the fix may require nontrivial effort or have nontrivial
 consequences for your API.

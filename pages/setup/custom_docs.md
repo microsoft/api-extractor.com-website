@@ -17,17 +17,17 @@ this fairly straightforward.
 The **api-documenter** project was designed to serve as a code sample, so if you want to make some small changes,
 you can simply fork it and modify the code.  Here's the basic files you'd want to look at:
 
-- [apps/api-documenter](https://github.com/microsoft/rushstack/tree/master/apps/api-documenter) - the main
+- [apps/api-documenter](https://github.com/microsoft/rushstack/tree/main/apps/api-documenter) - the main
   project folder on GitHub.  This project is part of a [Rush](https://rushjs.io/) monorepo, but if you want to
   keep things simple, you can run `npm install` and `npm run build` in this folder and ignore all the other stuff.
 
 - [MarkdownAction.ts](
-  https://github.com/microsoft/rushstack/blob/master/apps/api-documenter/src/cli/MarkdownAction.ts) -
+  https://github.com/microsoft/rushstack/blob/main/apps/api-documenter/src/cli/MarkdownAction.ts) -
   This source file defines the `api-documenter markdown` command-line and its parameters.  It loads the `ApiModel`
   object and passes it to `MarkdownDocumenter`.
 
 - [MarkdownDocumenter.ts](
-  https://github.com/microsoft/rushstack/blob/master/apps/api-documenter/src/documenters/MarkdownDocumenter.ts) -
+  https://github.com/microsoft/rushstack/blob/main/apps/api-documenter/src/documenters/MarkdownDocumenter.ts) -
   This is the main documentation generator that you'd want to study.  It illustrates how to traverse the tree of
   declarations and render each TypeScript construct.  Since the
   [TSDoc library](https://github.com/microsoft/tsdoc/tree/master/tsdoc) already provides a nice API for representing
@@ -35,12 +35,12 @@ you can simply fork it and modify the code.  Here's the basic files you'd want t
   representing each page on the web site.  It's an unusual approach, but generating TSDoc output from TSDoc input
   avoids having to transform all the inner content.
 
-- [api-documenter/src/nodes](https://github.com/microsoft/rushstack/tree/master/apps/api-documenter/src/nodes) -
+- [api-documenter/src/nodes](https://github.com/microsoft/rushstack/tree/main/apps/api-documenter/src/nodes) -
   This folder extends the TSDoc library with some custom node types for headings, tables, note boxes, etc.
   that we need to make a full web page.
 
 - [MarkdownEmitter.ts](
-  https://github.com/microsoft/rushstack/blob/master/apps/api-documenter/src/markdown/MarkdownEmitter.ts) -
+  https://github.com/microsoft/rushstack/blob/main/apps/api-documenter/src/markdown/MarkdownEmitter.ts) -
   This class is the final stage that generates a Markdown document from our TSDoc "comment" (plus custom nodes).
   This separation might enable modularity in the future:  For example, if we wanted to support different Markdown
   flavors, the `MarkdownDocumenter` class doesn't have to be concerned with that.  Theoretically we could also
@@ -57,7 +57,7 @@ This is possible because of the [@microsoft/api-extractor-model](
 https://www.npmjs.com/package/@microsoft/api-extractor-model) library.  It does the hard work of loading
 the folder of .api.json files, parsing their contents, and providing a nice hierarchy that you can query.
 The library also implements the [ApiModel.resolveDeclarationReference()](
-https://github.com/microsoft/rushstack/blob/master/libraries/api-extractor-model/src/model/ApiModel.ts)
+https://github.com/microsoft/rushstack/blob/main/libraries/api-extractor-model/src/model/ApiModel.ts)
 function that you can use to resolve the declaration references such as `@link` hyperlinks.
 
 The README.md for **@microsoft/api-extractor-model** explains the basic hierarchy and how to traverse it,
