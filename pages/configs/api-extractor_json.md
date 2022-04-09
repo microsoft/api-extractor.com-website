@@ -8,7 +8,7 @@ API Extractor's behavior is controlled by a config file **api-extractor.json** t
 You can use the [api-extractor init]({% link pages/commands/api-extractor_init.md %}) command to create a template
 file to get you started.  The template will contain comments describing each setting.  It is based on
 [api-extractor-template.json](
-https://github.com/microsoft/rushstack/blob/master/apps/api-extractor/src/schemas/api-extractor-template.json)
+https://github.com/microsoft/rushstack/blob/main/apps/api-extractor/src/schemas/api-extractor-template.json)
 from the source code.
 
 The individual JSON fields are documented below.
@@ -564,7 +564,7 @@ Example:
 **Default value:**
 
 *(See [api-extractor-defaults.json](
-https://github.com/microsoft/rushstack/blob/master/apps/api-extractor/src/schemas/api-extractor-defaults.json)
+https://github.com/microsoft/rushstack/blob/main/apps/api-extractor/src/schemas/api-extractor-defaults.json)
 for the complete up-to-date table.)*
 
 ```js

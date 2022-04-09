@@ -133,6 +133,6 @@ support some advanced features that are described in the spec:
 
 These features may be implementation in the future.  If you'd like to contribute, take a look at the code in
 [AstReferenceResolver.ts](
-https://github.com/microsoft/rushstack/blob/master/apps/api-extractor/src/analyzer/AstReferenceResolver.ts)
+https://github.com/microsoft/rushstack/blob/main/apps/api-extractor/src/analyzer/AstReferenceResolver.ts)
 and [ModelReferenceResolver.ts](
-https://github.com/microsoft/rushstack/blob/master/libraries/api-extractor-model/src/model/ModelReferenceResolver.ts).
+https://github.com/microsoft/rushstack/blob/main/libraries/api-extractor-model/src/model/ModelReferenceResolver.ts).

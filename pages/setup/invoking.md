@@ -80,7 +80,7 @@ Assuming your `PATH` environment variable is set up correctly, now you should no
 
 Next, we need to create a config file `api-extractor.json` for your project.  The following command will create
 [a template file](
-https://github.com/microsoft/rushstack/blob/master/apps/api-extractor/src/schemas/api-extractor-template.json)
+https://github.com/microsoft/rushstack/blob/main/apps/api-extractor/src/schemas/api-extractor-template.json)
 that shows all settings and their default values:
 
 ```
@@ -221,7 +221,7 @@ If you invoke API Extractor multiple times for a single **tsconfig.json** enviro
 you to reuse the same `CompilerState` object across multiple invocations.  This can be a significant performance
 optimization, since the TypeScript compiler analysis is relatively expensive.  Take a look at the
 [api-extractor-scenarios/src/runScenarios.ts](
-https://github.com/microsoft/rushstack/blob/master/build-tests/api-extractor-scenarios/src/runScenarios.ts)
+https://github.com/microsoft/rushstack/blob/main/build-tests/api-extractor-scenarios/src/runScenarios.ts)
 test runner for a real world example of how to do this.
 
 ## Reusing settings across projects
