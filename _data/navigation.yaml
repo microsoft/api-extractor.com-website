@@ -131,6 +131,8 @@ docs_nav:
         url: /pages/messages/ae-unresolved-inheritdoc-reference
       - title: ae-unresolved-link
         url: /pages/messages/ae-unresolved-link
+      - title: ae-wrong-input-file-type
+        url: /pages/messages/ae-wrong-input-file-type
 
   - title: Command line
     subitems:
