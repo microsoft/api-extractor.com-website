@@ -57,10 +57,10 @@ like this to your **api-extractor.json** file:
 ```js
   "messages": {
     "extractorMessageReporting": {
+      // Disable this validation at your own risk:  Processing an incorrect file type
+      // may lead to other errors.  Function bodies may incorrectly get emitted in the
+      // .d.ts rollup.
       "ae-wrong-input-file-type": {
-        // Disable this validation at your own risk.  Processing an incorrect file type
-        // may lead to other errors.  Function bodies may incorrectly get emitted in the
-        // .d.ts rollup.
         "logLevel": "none"
       }
     }
