@@ -36,8 +36,8 @@ imported instead of the corresponding `.d.ts` file.
 > ```
 >
 > Although this reports the dependency graph of the ***source files*** (and not the `mainEntryPointFilePath`
-> view), it can still be informative.  For an accurate trace, you would need to temporarily modify
-> your **tsconfig.json** file to process .d.ts files, as API Extractor does for its analysis.
+> view), it can still be informative.  For an accurate trace, you could invoke the compiler on
+> a secondary project that imports your project as an NPM dependency.
 
 Common issues:
 
