@@ -96,6 +96,11 @@ export class Book {
 }
 ```
 
+Gotchas:
+
+- Be aware that in accordance with the JS spec, getter/setter pairs split across the inheritance chain may not
+  work as one might expect. See [this playground link](https://www.typescriptlang.org/play?#code/PQKhCgAIUglBTADgJ3gZ3gOwC5sgQ0kXmTQHtMA6KGAAUQFcAjAGwEsBjG4cDl-NHgAKJcpkgBvKJBkoy2eBwUATSAH1M+ALbxIAXkgByQwG5w0maAgybMAOLxckbAAtdmnZDIAzZ26KiFNQ2MiA8IQDmjpAe8AAUAJQAXJBo2MhsmBGSFiGQqNgMyOKubGiUGtrwZiEAvuD14FY0cEioGDh4+OLwWogsZACe8PDBdIysnGM8fAJ4AKJ9A8O68AAeCpjKwoHiUiHNeTAAyo54ru5VXr4XAaRBudDhNsDAkPPIyGTIKXH48ABaLRlNCZCIAqLYBTIBKQAAq-jkxGQ2EGkAARNg2NgWPB0ZAXAICKlHNDIEwGNgYmRIJDocEXm8EWVICQvshICz1sQlPBlJRIAADRb9IYjQWQADubBYLGpVMybgyVNudJIkG8Xy0QpE90wgoZljep10t0FHAo5FxlAGEQlTHgA0lhpJVNicQAbvgWAx4Ck0hksrD9nkZKVypVPAYvT7qrl6o0LZg0qylmLdAZMPBJe80ytEmZeqKVpRYvojABBdgceCmXiWsjW21xIvLEalqoJEyQV6QAAyZAieEFDC28G8mT5BqAA) for an example.
+
 ## See also
 
 - [ae-setter-with-docs message]({% link pages/messages/ae-setter-with-docs.md %})
