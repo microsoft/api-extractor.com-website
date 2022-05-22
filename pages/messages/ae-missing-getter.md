@@ -96,6 +96,16 @@ export class Book {
 }
 ```
 
+> **A pitfall involving "inherited" getters**
+>
+> If you choose to disable the `ae-missing-getter` validation, be careful with inherited properties:
+> If a child class overrides a property by specifying the setter only, the getter will become undefined.
+> Unlike some other languages, ECMAScript `get` and `set` attributes comprise a single
+> [accessor property](https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#sec-object-type)
+> that is being overridden.
+> See [this playground link](https://www.typescriptlang.org/play?#code/PQKhCgAIUglBTADgJ3gZ3gOwC5sgQ0kXmTQHtMA6KGAAUQFcAjAGwEsBjG4cDl-NHgAKJcpkgBvKJBkoy2eBwUATSAH1M+ALbxIAXkgByQwG5w0maAgybMAOLxckbAAtdmnZDIAzZ26KiFNQ2MiA8IQDmjpAe8AAUAJQAXJBo2MhsmBGSFiGQqNgMyOKubGiUGtrwZiEAvuD14FY0cEioGDh4+OLwWogsZACe8PDBdIysnGM8fAJ4AKJ9A8O68AAeCpjKwoHiUiHNeTAAyo54ru5VXr4XAaRBudDhNsDAkPPIyGTIKXH48ABaLRlNCZCIAqLYBTIBKQAAq-jkxGQ2EGkAARNg2NgWPB0ZAXAICKlHNDIEwGNgYmRIJDocEXm8EWVICQvshICz1sQlPBlJRIAADRb9IYjQWQADubBYLGpVMybgyVNudJIkG8Xy0QpE90wgoZljep10t0FHAo5FxlAGEQlTHgA0lhpJVNicQAbvgWAx4Ck0hksrD9nkZKVypVPAYvT7qrl6o0LZg0qylmLdAZMPBJe80ytEmZeqKVpRYvojABBdgceCmXiWsjW21xIvLEalqoJEyQV6QAAyZAieEFDC28G8mT5BqAA) for an example.
+
+
 ## See also
 
 - [ae-setter-with-docs message]({% link pages/messages/ae-setter-with-docs.md %})
