@@ -98,6 +98,44 @@ imports `library2`.  To avoid this, we can specify `"bundledPackages": [ "librar
 This would direct API Extractor to embed those types directly in the .d.ts rollup `library1.d.ts`, as if they had
 been local files for `library1`.
 
+### newlineKind
+
+Example:
+```js
+  "newlineKind": "lf",
+```
+
+**Default value:** `"crlf"`
+
+Specifies what type of newlines API Extractor should use when writing output files.  By default, the output files
+will be written with Windows-style newlines.  To use POSIX-style newlines, specify `"lf"` instead. To use the OS's default
+newline kind, specify `"os"`.
+
+### testMode
+
+Example:
+```js
+  "testMode": true,
+```
+
+**Default value:** `false`
+
+Set to true when invoking API Extractor's test harness. When `testMode` is true, the `toolVersion` field in the
+.api.json file is assigned an empty string to prevent spurious diffs in output files tracked for tests.
+
+### enumMemberOrder
+
+Example:
+```js
+  "enumMemberOrder": "preserve",
+```
+
+**Default value:** `"by-name"`
+
+Specifies how API Extractor sorts members of an enum when generating api.json. By default, the output files
+will be sorted alphabetically, which is `"by-name"`. To keep the ordering in the source code, specify `"preserve"`.
+
+
 
 ## Compiler Section
 
@@ -406,6 +444,7 @@ Example:
 When a declaration is trimmed, by default it will be replaced by a code comment such as
 `Excluded from this release type: exampleMember`.  Set `omitTrimmingComments` to true to remove the
 declaration completely.
+
 
 
 ## TSDoc Metadata Section
