@@ -73,7 +73,7 @@ What do we do with these generated Markdown files?  There are various options:
   Example branch: [https://github.com/microsoft/rushstack.io-website/tree/master/pages/api](
   https://github.com/microsoft/rushstack.io-website/tree/master/pages/api)
 
-  Example website: [https://rushstack.io/pages/api/](https://rushstack.io/pages/api/)
+  Example website: [https://api.rushstack.io/pages/](https://api.rushstack.io/pages/)
 
 - **Docusaurus**: These Markdown files can also be rendered using [Docusaurus](https://docusaurus.io/), which
   produces a React-based web site using Markdown inputs.
