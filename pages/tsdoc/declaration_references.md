@@ -131,7 +131,7 @@ support some advanced features that are described in the spec:
 - References using ECMAScript symbols instead of identifiers
 - Import paths
 
-These features may be implementation in the future.  If you'd like to contribute, take a look at the code in
+These features may be implemented in the future.  If you'd like to contribute, take a look at the code in
 [AstReferenceResolver.ts](
 https://github.com/microsoft/rushstack/blob/main/apps/api-extractor/src/analyzer/AstReferenceResolver.ts)
 and [ModelReferenceResolver.ts](
