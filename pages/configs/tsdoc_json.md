@@ -33,7 +33,7 @@ You can also define your own tags in **tsdoc.json**, and the ESLint plugin will 
 API Extractor serializes these definitions into the .api.json output files (in the `"tsdocConfig"` field)
 so that they are accessible to tools that use the
 [@microsoft/api-extractor-model](https://www.npmjs.com/package/@microsoft/api-extractor-model) library
-(via the [ApiDocumentedItem.tsdocComment](https://rushstack.io/pages/api/api-extractor-model.apidocumenteditem/) API).
+(via the [ApiDocumentedItem.tsdocComment](https://api.rushstack.io/pages/api-extractor-model.apidocumenteditem/) API).
 
 A custom tag definition might look like this:
 
