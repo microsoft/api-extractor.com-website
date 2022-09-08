@@ -4,12 +4,12 @@ title: ae-missing-release-tag
 navigation_source: docs_nav
 ---
 
-*"___ is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)."*
+*"___ is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)."*
 
 ## Remarks
 
-API Extractor uses release tags to track the maturity of your API.  By default, it requires every exported
-declaration to have a release tag.
+API Extractor uses release tags to track the maturity of your API.  By default, it requires every declaration
+in your API to have a release tag.
 
 Example:
 
@@ -23,7 +23,7 @@ export class Widget {  // <-- missing release tag
   }
 }
 
-// Warning: "Widget" is exported by the package, but it is missing
+// Warning: "Widget" is part of the package's API, but it is missing
 // a release tag (@alpha, @beta, @public, or @internal)
 ```
 
@@ -51,7 +51,7 @@ has several benefits:
   not be able to see the entry point, but the release tag clearly signals that this class should get special
   attention. It is part of your API signature.
 
-- When adding a new export, choosing a release tag requires the person to stop and think about visibility:  How mature
+- When adding a new API, choosing a release tag requires the person to stop and think about visibility:  How mature
   is this API design?  Should it really be `@public`, or should we maybe start with `@alpha` or `@beta`?
 
 - It avoids accidents.  For example, it might be embarrassing to be browsing your API web site one day, and
