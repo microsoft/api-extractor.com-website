@@ -299,6 +299,21 @@ If they are different, a production build will fail.
 The path is resolved relative to the folder of the config file that contains the setting; to change this,
 prepend a folder token such as `<projectFolder>`.
 
+### apiReport.includeForgottenExports
+
+Example:
+```js
+  "apiReport": {
+    . . .
+    "includeForgottenExports": true,
+    . . .
+  }
+```
+
+**Default value:** `false`
+
+Whether "forgotten exports" should be included in the API report file. Forgotten exports are declarations
+flagged with [ae-forgotten-export]({% link pages/messages/ae-forgotten-export.md %}) warnings.
 
 
 ## Doc Model Section
@@ -339,6 +354,21 @@ The output path for the doc model file.  The file extension should be `.api.json
 The path is resolved relative to the folder of the config file that contains the setting; to change this,
 prepend a folder token such as `<projectFolder>`.
 
+### docModel.includeForgottenExports
+
+Example:
+```js
+  "docModel": {
+    . . .
+    "includeForgottenExports": true,
+    . . .
+  }
+```
+
+**Default value:** `false`
+
+Whether "forgotten exports" should be included in the doc model file. Forgotten exports are declarations
+flagged with [ae-forgotten-export]({% link pages/messages/ae-forgotten-export.md %}) warnings.
 
 
 ## .d.ts Rollup Section
