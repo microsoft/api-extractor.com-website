@@ -313,9 +313,7 @@ Example:
 **Default value:** `false`
 
 Whether "forgotten exports" should be included in the API report file. Forgotten exports are declarations
-flagged with `ae-forgotten-export` warnings. See https://api-extractor.com/pages/messages/ae-forgotten-export/
-to learn more.
-
+flagged with [ae-forgotten-export]({% link pages/messages/ae-forgotten-export.md %}) warnings.
 
 
 ## Doc Model Section
@@ -370,9 +368,7 @@ Example:
 **Default value:** `false`
 
 Whether "forgotten exports" should be included in the doc model file. Forgotten exports are declarations
-flagged with `ae-forgotten-export` warnings. See https://api-extractor.com/pages/messages/ae-forgotten-export/
-to learn more.
-
+flagged with [ae-forgotten-export]({% link pages/messages/ae-forgotten-export.md %}) warnings.
 
 
 ## .d.ts Rollup Section
