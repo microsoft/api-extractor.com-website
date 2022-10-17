@@ -64,14 +64,13 @@ What do we do with these generated Markdown files?  There are various options:
 
 - **GitHub**:  If you're using GitHub, you can simply commit them to your master branch in
   a "docs" folder, and they will be rendered using GitHub's markdown previewer.  Here's an example of how it looks:
-  [node-core-library.md](https://github.com/microsoft/rushstack.io-website/blob/master/pages/api/node-core-library.md)
+  [node-core-library.md](https://github.com/microsoft/rushstack-websites/blob/main/websites/api.rushstack.io/docs/pages/node-core-library.md)
 
 - **GitHub Pages**:  If you use [GitHub pages](https://guides.github.com/features/pages/) to host a web site for
   your project, your repo will probably have a "gh-pages" branch.  You can add the Markdown files there,
   as seen here:
 
-  Example branch: [https://github.com/microsoft/rushstack.io-website/tree/master/pages/api](
-  https://github.com/microsoft/rushstack.io-website/tree/master/pages/api)
+  Example branch: [https://github.com/microsoft/rushstack-websites/tree/main/websites/api.rushstack.io/docs/pages](https://github.com/microsoft/rushstack-websites/tree/main/websites/api.rushstack.io/docs/pages)
 
   Example website: [https://api.rushstack.io/pages/](https://api.rushstack.io/pages/)
 
