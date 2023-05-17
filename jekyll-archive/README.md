@@ -1,16 +1,37 @@
-# api-extractor.com deployment repo
+# Getting Started
 
-This repository hosts GitHub Pages deployments for the https://api-extractor.com website.
+## Dependencies
 
-**Website source files:** https://github.com/microsoft/rushstack-websites/tree/main/websites/api-extractor.com
+To run this site locally, you'll first need the following dependencies:
 
-**Deploy branch:** https://github.com/microsoft/api-extractor.com-website/tree/gh-pages
+* [Ruby](https://www.ruby-lang.org/en/)
+* [Bundler](https://bundler.io/)
+* [Jekyll](https://jekyllrb.com/)
 
-If you have questions or suggestions regarding the `api-extractor.com` website, please create your issue in the upstream [rushstack-websites](https://github.com/microsoft/rushstack-websites/issues) monorepo.
+## Run Locally
+
+Once the above dependencies are installed on your local machine, run the following commands to install the latest dependencies
+and run the solution locally:
+
+1. Install the site's gem dependencies with `bundle install` at the root of the project.
+2. Start the local web server with `bundle exec jekyll serve` or for incremental builds run `bundle exec jekyll serve --incremental`.
+3. Once the site has been generated you'll be able to navigate to it at [http://127.0.0.1:4000/](http://127.0.0.1:4000/).
+
+## Regenerating the search index
+
+1. Log in to the https://www.algolia.com/ dashboard using the "rushbot" GitHub alias
+2. Confirm that the Search-Only API Key and Application ID match the definitions in _config.yml
+3. Run this command:
+
+```
+set ALGOLIA_API_KEY=(your_admin_api_key)
+bundle exec jekyll build
+bundle exec jekyll algolia
+```
 
 # Contributing
 
-This project welcomes contributions and suggestions. Most contributions require you to agree to a
+This project welcomes contributions and suggestions.  Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
 the rights to use your contribution. For details, visit https://cla.microsoft.com.
 
